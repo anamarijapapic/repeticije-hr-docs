@@ -1,0 +1,53 @@
+\documentclass[12pt, a4paper]{article}
+
+\input{XX_preamble}
+
+\begin{document}
+
+\selectlanguage{croatian}
+
+\input{XX_frontmatter} % Numbering & title pages
+
+\input{00_summary_hr}
+
+\noindent\textbf{Ključne riječi}: \textit{lorem, ipsum, dolor, sit, amet}
+
+\selectlanguage{english}
+
+\input{00_summary_en}
+
+\noindent\textbf{Keywords:} \textit{lorem, ipsum, dolor, sit, amet}
+
+\selectlanguage{croatian}
+
+\newpage
+\input{01_introduction}
+
+\newpage
+\input{02_technologies}
+
+\newpage
+\input{03_implementation}
+
+\newpage
+\input{04_conclusion}
+
+\newpage
+\clearpage
+\phantomsection{}
+\addcontentsline{toc}{section}{Literatura}
+\bibliography{citations}
+\bibliographystyle{IEEEtran}
+
+\newpage
+\clearpage
+\pagestyle{empty}
+\phantomsection{}
+\begin{appendices}
+	\appendix
+	\listoffigures
+	\listoftables
+	\lstlistoflistings{}
+\end{appendices}
+
+\end{document}

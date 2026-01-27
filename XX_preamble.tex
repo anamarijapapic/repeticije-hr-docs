@@ -1,0 +1,121 @@
+% Encoding & language (load first)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[croatian,english]{babel}
+
+% Document counters
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% Page layout & spacing
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+\usepackage{setspace}
+\linespread{1.5}
+
+% Typography & fonts
+\usepackage{times}
+
+% Section styling
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+\usepackage{secdot} % Use dots in section numbering
+\sectiondot{subsection}
+\sectiondot{subsubsection}
+\sectiondot{paragraph}
+
+% Headers, appendices, PDF includes
+\usepackage{fancyhdr}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+% Appendix names in Croatian
+\addto\captionscroatian{
+    \renewcommand{\appendixtocname}{Dodatci}
+    \renewcommand{\appendixpagename}{Dodatci}
+}
+
+% Graphics and floats
+\usepackage{graphicx}
+\usepackage{float}
+
+% Tables, captions, and sub-figures
+\usepackage{longtable}
+\usepackage[labelfont={bf}]{caption}
+\usepackage{subfig}
+
+% Citations & minor utilities
+\usepackage{cite}
+\usepackage{verbatim}
+\usepackage{parskip} % Space between paragraphs
+\usepackage{indentfirst}
+\setlength{\parindent}{1cm}
+
+% Misc utilities
+\usepackage{etoolbox}
+\usepackage{dirtree}
+
+% Colors
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.52,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codedarkred}{rgb}{0.63,0.08,0.08}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.98}
+
+% Listings configuration
+\usepackage{listings}
+\lstdefinelanguage{TypeScript}{
+    keywords={abstract, any, as, boolean, break, case, catch, class, console,
+            const, continue, debugger, declare, default, delete, do, else, enum, export,
+            extends, false, finally, for, from, function, get, if, implements, import, in,
+            infer, instanceof, interface, keyof, let, module, namespace, never, new, null,
+            number, object, package, private, protected, public, readonly, require, return,
+            set, static, string, super, switch, symbol, this, throw, true, try, type, typeof,
+            undefined, unique, unknown, var, void, while, with, yield},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    ndkeywordstyle=\color{darkgray}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codedarkred},
+    morestring=[b]',
+    morestring=[b]" % chktex 18
+}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    numberstyle=\tiny\color{codegray},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    columns=fullflexible,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single,
+    framexleftmargin=5mm,
+    frameshape={RYR}{Y}{Y}{RYR},
+    aboveskip=1cm,
+    belowskip=0.5cm,
+}
+
+\lstset{
+    language=TypeScript,
+    style=mystyle,
+}
+
+% URL helper (before hyperref)
+\usepackage[hyphens]{url}
+
+% Hyperref last
+\usepackage[hidelinks]{hyperref}
+
+% Listings names in Croatian
+\renewcommand\lstlistlistingname{Popis ispisa k\^oda}
+\renewcommand*\lstlistingname{Ispis}
