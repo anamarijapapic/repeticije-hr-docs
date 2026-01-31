@@ -1,18 +1,158 @@
 \section{Tehnologije i teoretska podloga}
 
-\subsection{Potpoglavlje}
+\subsection{Next.js, React, TypeScript, Node.js, \texttt{npm}}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio
-vitae vestibulum vestibulum. Cras venenatis euismod malesuada.
+\textbf{Next.js} je razvojni okvir (engl.\ \textit{framework}) otvorenog k\^oda za React
+koji omogućava objedinjeni (engl.\ \textit{full-stack}) razvoj web aplikacija,
+što znači da obuhvaća razvoj i klijentskog (engl.\ \textit{front-end}) i
+poslužiteljskog (engl.\ \textit{back-end}) dijela aplikacije. Razvijen je od
+strane tvrtke Vercel, a izvorni k\^od dostupan je na platformi
+GitHub~\cite{nextJsGitHub} gdje je prva verzija objavljena 2016.\ godine.
 
-\subsection{Još jedno potpoglavlje}
+Temeljen je na JavaScriptu i izvršava se u okruženju \textbf{Node.js}, pri čemu
+Node.js omogućava pokretanje JavaScript k\^oda izvan preglednika, na
+poslužitelju, što je preduvjet za poslužiteljsko renderiranje i izgradnju
+aplikacije~\cite{nodeJsAbout}. U praksi se Next.js projekti gotovo uvijek
+razvijaju uz \textbf{TypeScript}, nadskup JavaScripta razvijen od strane
+Microsofta, koji uvodi statičku tipizaciju i provjeru k\^oda u vrijeme
+prevođenja, čime se smanjuje broj pogrešaka u složenijim
+aplikacijama~\cite{typescriptDocs}.
 
-\textit{TODO{:} Add your content here}
+Upravljanje ovisnostima obavlja se putem \textbf{\texttt{npm}}-a (engl.\
+\textit{Node Package Manager}) ili alternativno
+\texttt{pnpm}/\texttt{yarn}/\texttt{bun} upravitelja paketa, koji omogućuju
+jednostavnu instalaciju, ažuriranje i skriptiranje razvojnih zadataka u Node.js
+okruženju. Paketi (biblioteke) se preuzimaju iz javnog repozitorija
+\href{https://www.npmjs.com/}{npmjs.com}, a definiraju se u datoteci
+\texttt{package.json} unutar projekta, a pri instalaciji se kreira i datoteka
+\texttt{package-lock.json} koja zaključava točne verzije ovisnosti radi
+konzistentnog okruženja. U direktoriju \texttt{node\_modules} pohranjuju se sve
+instalirane ovisnosti projekta~\cite{npmDocs}.
 
-\subsubsection{ABC}
+\textbf{React} (React.js) je slobodan softver otvorenog k\^oda tzv. FOSS (engl.\
+\textit{Free and Open Source Software}). Radi se o JavaScript biblioteci za
+izgradnju korisničkih sučelja, razvijenoj od strane Facebooka (sada Meta).
+Programski k\^od javno je objavljen 2013.\ godine, a od tada je prigrljen od
+strane zajednice i pozicionirao se kao jedna od najpopularnijih biblioteka za
+razvoj web aplikacija~\cite{reactGitHub}.
 
-\textit{TODO{:} Add your content here}
+React se često opisuje kroz tri osnovne značajke: \textit{declarative},
+\textit{component-based} i sloganom \textit{„learn once, write anywhere”}.
+Deklarativan pristup znači da razvojni programer opisuje kakvo korisničko
+sučelje želi u određenom stanju aplikacije, a React se brine za učinkovit
+prikaz i osvježavanje DOM-a (engl.\ \textit{Document Object Model}), što
+olakšava razumijevanje i održavanje k\^oda. Komponentni pristup podrazumijeva
+da se sučelje sastoji od malih, ponovno iskoristivih komponenti koje
+enkapsuliraju logiku i prikaz pa se iste komponente mogu koristiti na više
+mjesta i u različitim projektima. Načelo \textit{„learn once, write anywhere”}
+odnosi se na činjenicu da se ista znanja i koncepti mogu primijeniti u web
+aplikacijama, ali i u izradi mobilnih (React Native) i desktop aplikacija, bez
+ponovnog učenja potpuno novog programskog modela~\cite{reactLegacy}.
 
-\subsubsection{DEF}
+React se temelji na konceptu komponenti, pri čemu se u povijesnom razvoju
+razlikuju klasne (engl.\ \textit{class}) komponente i funkcijske (engl.\
+\textit{function}) komponente, koje su trenutno preporučeni način pisanja
+komponenti. Uvođenjem kuka (engl.\ \textit{hooks}) preko Hook API-ja (engl.\
+\textit{Application Programming Interface}) funkcijske komponente dobile su
+mogućnost upravljanja stanjem i \textit{side} efektima bez potrebe za klasama,
+čime se dodatno pojednostavilo strukturiranje logike i ponovna iskoristivost
+k\^oda. React koristi virtualni DOM {--} laganu, u memoriji pohranjenu
+reprezentaciju strukture korisničkog sučelja kako bi učinkovito uspoređivao
+prethodno i novo stanje te primjenjivao samo nužne promjene u stvarnom DOM-u,
+što značajno poboljšava performanse složenijih aplikacija. JSX (engl.\
+\textit{JavaScript XML}) je sintaksno proširenje za JavaScript koji omogućuje
+zapis komponenti u obliku HTML-u slične sintakse, pri čemu se JSX u pozadini
+prevodi u pozive funkcije \texttt{React.createElement}, a razvojnom programeru
+olakšava čitanje i strukturiranje k\^oda~\cite{reactReference}. U kombinaciji s
+TypeScriptom koristi se proširenje TSX (engl.\ \textit{TypeScript JSX}). U
+novijim verzijama React uvodi i \textit{Server Components} {--} komponente koje
+se izvršavaju isključivo na poslužitelju, generiraju HTML bez slanja JavaScript
+k\^oda na klijent i tako smanjuju veličinu paketa te povećavaju sigurnost i
+performanse, osobito u kombinaciji s razvojnim okvirima poput Next.js-a.
 
-\textit{TODO{:} Add your content here}
+Next.js nadograđuje React dodajući brojne značajke i optimizacije koje
+olakšavaju izgradnju skalabilnih i visokoučinkovitih web aplikacija. Uvodi
+višestruke načine renderiranja stranica i napredne optimizacije koje su posebno
+važne za performanse i SEO.\@ Osim klasičnog renderiranja na strani klijenta
+    {--} CSR (engl.\ \textit{Client-Side Rendering}), Next.js podržava
+poslužiteljsko renderiranje {--} SSR (engl.\ \textit{Server-Side Rendering}),
+statičko generiranje stranica {--} SSG (engl.\ \textit{Static Site Generation})
+te inkrementalno statičko obnavljanje {--} ISR (engl.\ \textit{Incremental
+    Static Regeneration}), pri čemu se većina sadržaja isporučuje kao statički
+HTML, a pojedine stranice se povremeno regeneriraju kada se podaci promijene.
+Next.js također automatski dijeli k\^od u manje dijelove (engl.\ \textit{code
+    splitting}) i koristi usmjeravanje (engl.\ \textit{routing}) bazirano na
+strukturi direktorija, poznato kao \textit{file-based routing}. To znači da se
+samo nužni dijelovi k\^oda učitavaju za svaku stranicu, čime se smanjuje
+vrijeme učitavanja i poboljšava korisničko iskustvo. U novijim verzijama uveden
+je App Router s podrškom za React Server Components, strujanje (engl.\
+\textit{streaming}) sadržaja i Server Actions, što omogućuje da se dio logike
+obrade podataka izvršava na poslužitelju uz manju količinu potrebnog JavaScript
+k\^oda na klijentu, što pruža brži prikaz sadržaja korisniku~\cite{nextJsDocs}.
+
+Osim spomenutih značajki, Next.js sadrži integrirane alate za optimizaciju
+slika automatski generirajući različite veličine, koristi lijeno učitavanje
+(engl.\ \textit{lazy loading}) i moderne formate slika, čime se poboljšavaju
+Core Web Vitals metrike i ukupne performanse web aplikacija. U kombinaciji s
+podrškom za TypeScript \textit{„out-of-the-box”}, integracijom s Vercelom za
+jednostavnu isporuku te bogatim ekosustavom dodataka, Next.js se pozicionira
+kao cjelovit razvojni okvir za izradu skalabilnih, produkcijski spremnih
+aplikacija~\cite{nextJsDocs}.
+
+U trenutku izrade rada najnovija stabilna verzija Next.js-a je 16, dok je React
+dosegao verziju 19 te su iste korištene u izradi praktičnog rada, uz TypeScript
+verzije 5.x. Korištena verzija Node.js-a je 24.x LTS (engl.\ \textit{Long Term
+    Support}) uz \texttt{npm} verzije 11.x.
+
+\subsection{UI sloj: \texttt{shadcn/ui}, Radix UI, Tailwind CSS}
+
+Sloj korisničkog sučelja (engl.\ UI {--} \textit{User Interface}) aplikacije
+temelji se na kombinaciji biblioteka \texttt{shadcn/ui}, Radix UI i Tailwind
+CSS, koje su usko povezane i nadograđuju se jedna na drugu.
+
+\textbf{\texttt{shadcn/ui}} je zbirka unaprijed pripremljenih React komponenti (npr.\ avatar,
+botuni, bedževi, kartice za prikaz sadržaja, dijaloški okviri, padajući
+izbornici, polja i grupe za unos, navigacijski izbornici, tablice itd.) koje su
+izgrađene na Radix UI „primitivima” i stilizirane pomoću Tailwind CSS-a.
+Umjesto da se isporučuje kao klasična biblioteka ovisnosti, \texttt{shadcn/ui}
+generira stvarne izvorišne datoteke komponenti koje se kopiraju u projekt, čime
+razvojni programer zadržava potpunu kontrolu nad k\^odom, može ga prilagoditi
+specifičnim potrebama aplikacije i izbjegava dodatni teret zasebne UI
+biblioteke dok se aplikacija izvršava (engl.\ \textit{runtime}). Ovo je osobito
+korisno u većim projektima, gdje se očekuju dugoročno održavanje, prilagodba
+dizajna i dosljedan vizualni identitet~\cite{shadcnDocs}.
+
+\textbf{Radix UI} predstavlja skup pristupačnih (engl.\ \textit{accessible})
+niskorazinskih komponenti tzv. „primitiva” poput dijaloških okvira, skočnih
+prozora, kartica (engl.\ \textit{tabs}), skočnih izbornika i slično. Fokus
+Radix UI-ja je na ispravnom ponašanju i pristupačnosti: osigurava ispravne ARIA
+(engl.\ \textit{Accessible Rich Internet Applications}) atribute, upravljanje
+fokusom i podršku za tipkovničku navigaciju u skladu s WAI-ARIA (engl.\
+\textit{Web Accessibility Initiative {--} ARIA}) smjernicama, dok izgled i
+stilizacija ostaju u potpunosti u domeni razvojnih timova~\cite{radixUiPrimitives}.
+
+\textbf{Tailwind CSS} je utilitaristički (engl.\ \textit{utility-first}) razvojni okvir
+za CSS koji umjesto gotovih vizualnih komponenti nudi velik broj malih,
+jednoznačnih klasa za oblikovanje (npr.\ razmaci, boje, tipografija, raspored {--}
+fleksibilni i mrežni (engl.\ \textit{grid}) rasporedi). Te se klase kombiniraju
+izravno u markup-u ili JSX/TSX k\^odu, čime se smanjuje potreba za pisanjem
+zasebnih CSS datoteka i olakšava održavanje dosljednog dizajna u komponentnom
+pristupu Reacta. Tailwind je visokokonfigurabilan putem konfiguracijske
+datoteke koja definira dizajnerske tokene (boje, tipografiju, radijuse,
+razmake), a u produkcijskom okruženju alat automatski uklanja neiskorištene klase
+(engl.\ \textit{tree shaking}), što rezultira malim konačnim CSS paketom i
+boljim performansama~\cite{tailwindDocsCoreConceptsStylingWithUtilityClasses}.
+
+U razvijenoj aplikaciji kombinacija predstavljenih UI biblioteka omogućava
+izradu modernog, responzivnog i pristupačnog korisničkog sučelja uz dobru
+ravnotežu između brzine razvoja, kontrole nad dizajnom i tehničke kvalitete.
+
+\subsection{Baza podataka: PostgreSQL, Prisma ORM, Supabase}
+
+\textbf{PostgreSQL}, \textbf{Prisma ORM}, \textbf{Supabase} (CLI, lokalni Docker razvoj, hosting, real-time funkcionalnosti)
+
+\subsection{WebRTC}
+
+\subsection{Verzioniranje k\^oda, hosting i deployment, email servis}
+
+\textbf{Git}, \textbf{GitHub}, \textbf{Vercel}, \textbf{Resend}
