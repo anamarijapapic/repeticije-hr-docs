@@ -1,6 +1,23 @@
 \section{Tehnologije i teoretska podloga}
 
-\subsection{Next.js, React, TypeScript, Node.js, \texttt{npm}}
+U ovom poglavlju detaljno su opisane tehnologije i alati korišteni u razvoju,
+kao i teoretska podloga koja je oblikovala arhitekturu i dizajn sustava. Polazi
+se od klasične troslojne arhitekture (prezentacijski, aplikacijski i podatkovni
+sloj), ali su za potrebe jasnijeg opisa korištenih tehnologija ti slojevi
+dodatno razrađeni u zajednički prezentacijski i aplikacijski sloj, sloj
+korisničkog sučelja, podatkovni sloj te komunikacijski sloj. Na kraju poglavlja
+kratko su opisani i ostali alati koji su korišteni u procesu razvoja.
+
+\subsection{Prezentacijski i aplikacijski sloj}
+
+U klasičnoj troslojnoj arhitekturi prezentacijski sloj zadužen je za prikaz
+podataka i interakciju s korisnikom, dok aplikacijski sloj implementira
+poslovnu logiku i orkestrira pristup podatkovnom sloju. U ovoj aplikaciji
+Next.js, temeljen na Reactu, istovremeno preuzima ulogu prezentacijskog sloja
+(renderiranje korisničkog sučelja u pregledniku) i dijela aplikacijskog sloja
+(renderiranje na strani poslužitelja, API rute, obrada zahtjeva), dok
+TypeScript, Node.js i \texttt{npm} čine temeljni tehnološki ekosustav u kojem
+se taj sloj razvija i izvršava.
 
 \textbf{Next.js} je razvojni okvir (engl.\ \textit{framework}) otvorenog k\^oda za React
 koji omogućava objedinjeni (engl.\ \textit{full-stack}) razvoj web aplikacija,
@@ -21,8 +38,8 @@ aplikacijama~\cite{typescriptDocs}.
 Upravljanje ovisnostima obavlja se putem \textbf{\texttt{npm}}-a (engl.\
 \textit{Node Package Manager}) ili alternativno
 \texttt{pnpm}/\texttt{yarn}/\texttt{bun} upravitelja paketa, koji omogućuju
-jednostavnu instalaciju, ažuriranje i skriptiranje razvojnih zadataka u Node.js
-okruženju. Paketi (biblioteke) se preuzimaju iz javnog repozitorija
+jednostavnu instalaciju, ažuriranje i skriptiranje razvojnih zadataka u
+okruženju Node.js. Paketi (biblioteke) se preuzimaju iz javnog repozitorija
 \href{https://www.npmjs.com/}{npmjs.com}, a definiraju se u datoteci
 \texttt{package.json} unutar projekta, a pri instalaciji se kreira i datoteka
 \texttt{package-lock.json} koja zaključava točne verzije ovisnosti radi
@@ -30,7 +47,7 @@ konzistentnog okruženja. U direktoriju \texttt{node\_modules} pohranjuju se sve
 instalirane ovisnosti projekta~\cite{npmDocs}.
 
 \textbf{React} (React.js) je slobodan softver otvorenog k\^oda tzv. FOSS (engl.\
-\textit{Free and Open Source Software}). Radi se o JavaScript biblioteci za
+\textit{Free and Open Source Software}). Riječ je o JavaScript biblioteci za
 izgradnju korisničkih sučelja, razvijenoj od strane Facebooka (sada Meta).
 Programski k\^od javno je objavljen 2013.\ godine, a od tada je prigrljen od
 strane zajednice i pozicionirao se kao jedna od najpopularnijih biblioteka za
@@ -74,8 +91,8 @@ Next.js nadograđuje React dodajući brojne značajke i optimizacije koje
 olakšavaju izgradnju skalabilnih i visokoučinkovitih web aplikacija. Uvodi
 višestruke načine renderiranja stranica i napredne optimizacije koje su posebno
 važne za performanse i SEO.\@ Osim klasičnog renderiranja na strani klijenta
-    {--} CSR (engl.\ \textit{Client-Side Rendering}), Next.js podržava
-poslužiteljsko renderiranje {--} SSR (engl.\ \textit{Server-Side Rendering}),
+    {--} CSR (engl.\ \textit{Client-Side Rendering}), Next.js podržava renderiranje
+na strani poslužitelja {--} SSR (engl.\ \textit{Server-Side Rendering}),
 statičko generiranje stranica {--} SSG (engl.\ \textit{Static Site Generation})
 te inkrementalno statičko obnavljanje {--} ISR (engl.\ \textit{Incremental
     Static Regeneration}), pri čemu se većina sadržaja isporučuje kao statički
@@ -104,7 +121,7 @@ dosegao verziju 19 te su iste korištene u izradi praktičnog rada, uz TypeScrip
 verzije 5.x. Korištena verzija Node.js-a je 24.x LTS (engl.\ \textit{Long Term
     Support}) uz \texttt{npm} verzije 11.x.
 
-\subsection{UI sloj: \texttt{shadcn/ui}, Radix UI, Tailwind CSS}
+\subsection{Sloj korisničkog sučelja}
 
 Sloj korisničkog sučelja (engl.\ UI {--} \textit{User Interface}) aplikacije
 temelji se na kombinaciji biblioteka \texttt{shadcn/ui}, Radix UI i Tailwind
@@ -147,12 +164,297 @@ U razvijenoj aplikaciji kombinacija predstavljenih UI biblioteka omogućava
 izradu modernog, responzivnog i pristupačnog korisničkog sučelja uz dobru
 ravnotežu između brzine razvoja, kontrole nad dizajnom i tehničke kvalitete.
 
-\subsection{Baza podataka: PostgreSQL, Prisma ORM, Supabase}
+\subsection{Podatkovni sloj}
 
-\textbf{PostgreSQL}, \textbf{Prisma ORM}, \textbf{Supabase} (CLI, lokalni Docker razvoj, hosting, real-time funkcionalnosti)
+Za pohranu podataka u aplikaciji koristi se relacijska baza podataka
+PostgreSQL, uz objektno-relacijsko mapiranje pomoću Prisma ORM-a i upravljani
+\textit{hosting} preko platforme Supabase.
 
-\subsection{WebRTC}
+\textbf{PostgreSQL} (Postgres) snažan je sustav za upravljanje relacijskim bazama
+podataka (engl.\ \textit{RDBMS {--} Relational Database Management System})
+otvorenog k\^oda s dugom poviješću razvoja, visokom razinom usklađenosti sa SQL
+(engl.\ \textit{Structured Query Language}) standardom te podrškom za napredne
+tipove podataka i transakcijske operacije. Kao objektno-relacijski sustav,
+PostgreSQL osim klasičnih relacijskih tablica podržava i pohranu
+polustrukturiranih podataka (npr.\ JSON/JSONB tipovi, polja, geografski
+tipovi), što ga čini pogodnim za moderne web aplikacije koje kombiniraju strogo
+strukturirane podatke (npr.\ korisnici, termini rezervacija, recenzije) s
+fleksibilnijim strukturama.~\cite{postgreSqlAbout}.
 
-\subsection{Verzioniranje k\^oda, hosting i deployment, email servis}
+\textbf{Prisma ORM} (engl.\ \textit{Object-Relational Mapper}) je biblioteka za
+objektno-relacijsko mapiranje za Node.js i TypeScript koji omogućuje tipno
+siguran (engl.\ \textit{type-safe}) pristup bazi podataka. U središtu Prisma
+pristupa nalazi se datoteka \texttt{schema.prisma} u kojoj se deklarativno
+definira shema podataka putem Prisma Schema Language (PSL) {--} definiraju se
+modeli, relacije i mapiranja na tablice u bazi, a Prisma na temelju te sheme
+automatski generira klijenta za pristup podacima, zajedno s odgovarajućim
+TypeScript tipovima. Time se postiže da su sve upite prema bazi moguće statički
+provjeriti u vrijeme prevođenja, uz bogatu podršku za automatsko dovršavanje i
+otkrivanje neispravnih upita prije pokretanja aplikacije, što smanjuje broj
+pogrešaka i ubrzava razvoj. Uz Prisma Client za rad s podacima, Prisma nudi i
+alate za migracije (Prisma Migrate) te vizualni pregled podataka
+(Prisma Studio) koji olakšavaju upravljanje razvojnim i produkcijskim
+okruženjima.~\cite{prismaDocs}.
 
-\textbf{Git}, \textbf{GitHub}, \textbf{Vercel}, \textbf{Resend}
+\textbf{Supabase} je platforma otvorenog k\^oda tipa \textit{„backend kao usluga”}
+(engl.\ \textit{Backend-as-a-Service}) izgrađena na PostgreSQL-u, koja nudi
+upravljanu bazu podataka, autentikaciju, pohranu datoteka, \textit{real-time}
+funkcionalnosti i poslužiteljske funkcije. U praksi to znači da se PostgreSQL
+baza podataka može vrlo brzo podići u oblaku, uz automatski izložene API-je,
+ugrađenu podršku za sigurnost na razini retka (engl.\ \textit{Row-Level
+    Security}) i mogućnost „osluškivanja” promjena u tablicama u stvarnom vremenu
+putem WebSocketa. Supabase pruža i CLI alat te mogućnost lokalnog razvoja putem
+Docker okruženja, što olakšava repliciranje produkcijske baze u lokalnom
+okruženju i testiranje sheme podataka.~\cite{supabaseDocs}.
+
+U ovoj aplikaciji PostgreSQL služi kao temeljna baza podataka, Prisma ORM kao
+tipno siguran sloj pristupa podacima u okruženju Next.js/TypeScript, dok
+Supabase pruža \textit{hosting} baze i \textit{real-time} funkcionalnosti, čime
+se dobiva skalabilan i moderni podatkovni sloj prilagođen potrebama web
+aplikacije za repeticije. Korištena su sljedeća izdanja tehnologija: PostgreSQL
+17.x, Prisma ORM 7.x i Supabase 2.x.
+
+\subsection{Komunikacijski sloj}
+
+Komunikacijski sloj u ovoj aplikaciji zadužen je za uspostavljanje i održavanje
+komunikacije u stvarnom vremenu između tutora i učenika tijekom online
+repeticija. U tu svrhu koristi se \textbf{WebRTC} (engl.\ \textit{Web Real‑Time
+    Communication}).
+
+WebRTC preuzima brigu o dohvaćanju audio i video tokova, uspostavi šifriranog
+kanala te prilagodbi kvalitete prijenosa uvjetima mreže, dok se logika
+aplikacije fokusira na upravljanje sobama, sudionicima i korisničkim sučeljem.
+U nastavku su detaljnije opisane ključne značajke i funkcionalnosti tehnologije
+WebRTC.\@
+
+\subsubsection{WebRTC}
+
+Tehnologija WebRTC je skup standardiziranih tehnologija otvorenog k\^oda (FOSS)
+koja omogućuje izravnu \textit{peer-to-peer} komunikaciju u stvarnom vremenu
+putem interneta, i to kroz moderne web preglednike ili nativne klijente u
+slučaju mobilnih aplikacija. Krajnji korisnici mogu izmjenjivati audio, video i
+podatke bez potrebe za dodatcima ili posebnim softverom. WebRTC se sastoji od
+WebRTC protokola i WebRTC API-ja specificiranog za JavaScript, dok je za
+nativne klijente dostupna biblioteka koja pruža iste
+funkcionalnosti.~\cite{webrtcOrg} Izvorni k\^od dostupan je u repozitoriju na
+poveznici
+\texttt{\href{https://webrtc.googlesource.com/src}{webrtc.googlesource.com/src}}.
+
+WebRTC protokol u suštini je sastavljen od niza standardiziranih protokola i
+stoga je često opisivan kao kolekcija protokola jer orkestrira različite
+protokole i mehanizme za uspostavu, održavanje i osiguravanje komunikacije u
+stvarnom vremenu, što je prikazano na
+slici~\ref{fig:webrtcAgent}~\cite{webrtcForTheCurious}.
+
+\begin{figure}[H]
+    \includegraphics[width=1\linewidth,clip=]{assets/webrtc-agent.png}
+    \centering
+    \caption{WebRTC kao kolekcija protokola (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/01-webrtc-agent.png}{webrtcforthecurious.com}})}\label{fig:webrtcAgent}
+\end{figure}
+
+Nastao je kao pokušaj da se tehnologije za govor i video u stvarnom vremenu,
+koje su ranije bile zatvorene i vlasničke, ugrade izravno u web preglednike kao
+otvoren standard. Google je 2010.\ kupio tvrtku Global IP Solutions (GIPS) te
+otvoreno licencirao k\^od njihovih RTC komponenti, što je bio ključni korak u
+razvoju WebRTC-a. Nakon toga, Google je 2011.\ pokrenuo projekt WebRTC, a
+standardizacija je trajala nekoliko godina i iziskivala velike napore i
+suradnju između dvaju standardizacijskih tijela: W3C-a (engl.\ \textit{World
+    Wide Web Consortium}) i IETF-a (engl.\ \textit{Internet Engineering Task
+    Force}) te velikog broja tvrtki i pojedinaca iz industrije. Uz Google, u razvoj
+specifikacija i implementaciju uključile su se i tvrtke poput Mozille,
+Microsofta, Applea, Intel Corporations, Cisca i Ericssona, a podrška je
+postupno uvedena u svim modernim web preglednicima, čime je WebRTC postao
+standardni mehanizam za \textit{in-browser} audio-video
+komunikaciju~\cite{webrtcRec}. Danas se primjenjuje u širokom spektru
+aplikacija, od video konferencija, do online igara, udaljenog upravljanja, IoT
+(engl.\ \textit{Internet of Things}) komunikacije i drugih scenarija koji
+zahtijevaju nisku latenciju i visoku kvalitetu prijenosa.
+
+\newpage
+
+\paragraph{Topologije sustava WebRTC}\mbox{}
+
+WebRTC topologije mogu se podijeliti na \textit{peer-to-peer} (P2P) i
+\textit{client/server} pristup~\cite{webrtcForTheCurious}.
+
+U najjednostavnijem slučaju dvije krajnje točke uspostavljaju izravnu vezu „1
+na 1” te međusobno razmjenjuju medijske tokove i podatke. Za grupne scenarije
+moguće je koristiti više različitih topologija, ovisno o broju sudionika,
+dostupnoj propusnosti i zahtjevima aplikacije.
+
+Topologija \textit{full mesh} podrazumijeva da je svaki sudionik povezan
+izravno sa svakim drugim sudionikom. Svaki klijent tada mora zasebno kodirati i
+slati svoj video tok prema svakom udaljenom sudioniku, što povećava opterećenje
+mreže i ograničava praktičan broj sudionika, ali uz relativno jednostavnu
+implementaciju i bez dodatne poslužiteljske infrastrukture za medije.
+Alternativno, \textit{hybrid mesh} smanjuje broj izravnih veza tako da se
+mediji prosljeđuju preko pojedinih sudionika.
+
+Topologije \textit{client/server} tipa koriste specijalizirane poslužitelje:
+SFU (engl.\ \textit{Selective Forwarding Unit}) koji selektivno prosljeđuje
+pristigle tokove svim klijentima te MCU (engl.\ \textit{Multipoint Conferencing
+    Unit}) koji višestruke ulazne tokove spaja u jedan kompozitni izlazni tok.
+
+Na slikama~\ref{fig:webrtcOneToOne} {--}~\ref{fig:webrtcMCU} prikazane su
+različite WebRTC topologije.
+
+\begin{figure}[H]
+    \includegraphics[width=0.5\linewidth,clip=]{assets/webrtc-one-to-one.png}
+    \centering
+    \caption{Topologija „1 na 1” (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-one-to-one.png}{webrtcforthecurious.com}})}\label{fig:webrtcOneToOne}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=1\linewidth,clip=]{assets/webrtc-full-mesh.png}
+    \centering
+    \caption{Topologija \textit{full mesh} (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-full-mesh.png}{webrtcforthecurious.com}})}\label{fig:webrtcFullMesh}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=1\linewidth,clip=]{assets/webrtc-hybrid-mesh.png}
+    \centering
+    \caption{Topologija \textit{hybrid mesh} (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-hybrid-mesh.png}{webrtcforthecurious.com}})}\label{fig:webrtcHybridMesh}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8\linewidth,clip=]{assets/webrtc-sfu.png}
+    \centering
+    \caption{Topologija SFU (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-sfu.png}{webrtcforthecurious.com}})}\label{fig:webrtcSFU}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.8\linewidth,clip=]{assets/webrtc-mcu.png}
+    \centering
+    \caption{Topologija MCU (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-mcu.png}{webrtcforthecurious.com}})}\label{fig:webrtcMCU}
+\end{figure}
+
+U ovoj aplikaciji koristi se \textit{peer-to-peer} topologija \textit{full
+    mesh} što znači da svaki klijent u sobi uspostavlja po jednu vezu
+\texttt{RTCPeerConnection} prema svakom drugom sudioniku.
+
+\paragraph{Faze uspostave WebRTC veze}\mbox{}
+
+Uspostava WebRTC veze može se konceptualno rastaviti na četiri uzastopna
+koraka: signalizaciju, uspostavu povezivanja, osiguravanje veze i samu
+komunikaciju, pri čemu svaki sljedeći korak započinje tek kada je prethodni u
+potpunosti uspješno dovršen.
+
+Prva faza, \textbf{signalizacija}, obuhvaća sve korake kojima se dva (ili više)
+sudionika međusobno „pronađu” i dogovore kako će komunicirati, prije nego što
+krene stvarni prijenos audio-video podataka. Signalizacija nije standardizirana
+u samom WebRTC-u, već se odvija \textit{„out-of-band”} i smatra dijelom
+aplikacijske logike {--} razvojni tim slobodno bira protokole i formate poruka
+(npr.\ REST, WebSocket i sl.). Najprije sudionici uspostave vezu sa zajedničkim
+signalizacijskim kanalom i na neki način identificiraju sobu ili razgovor u
+kojem sudjeluju. Zatim preko tog kanala razmjenjuju SDP (engl.\ \textit{Session
+    Description Protocol}) poruke s informacijama o tome koje medijske tokove žele
+slati te koje \textit{kodeke} i konfiguracije podržavaju, kao i pripadajuće
+signalizacijske poruke (ponuda/odgovor, kandidati i sl.) potrebne za uspostavu
+veze~\cite{webrtcForTheCurious}. Signalizacija je ilustrirana na
+slici~\ref{fig:webrtcSignaling}.
+
+\begin{figure}[H]
+    \includegraphics[width=1\linewidth,clip=]{assets/webrtc-signaling-sequence-overview.png}
+    \centering
+    \caption{Signalizacija (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/01-signaling-sequence-overview.png}{webrtcforthecurious.com}})}\label{fig:webrtcSignaling}
+\end{figure}
+
+Budući da WebRTC ne specificira način signalizacije, ova aplikacija koristi već
+spomenute \textit{real-time} funkcionalnosti platforme Supabase kao
+signalizacijski kanal. To znači da se poruke potrebne za uspostavu veze
+razmjenjuju preko Supabase \textit{real-time} kanala, dok se sami medijski
+tokovi (audio i video) nakon dogovora o parametrima uspostavljaju izravno
+između preglednika sudionika. Na taj se način podatkovni sloj
+(Supabase/PostgreSQL) i komunikacijski sloj (WebRTC) integriraju u cjelinu {--}
+Supabase osigurava pouzdanu i skalabilnu razmjenu signalnih poruka, a WebRTC
+preuzima prijenos multimedije u stvarnom vremenu.
+
+Nakon što je signalizacijom razmijenjena osnovna konfiguracija sesije, slijedi
+druga faza {--} \textbf{povezivanje}, u kojoj WebRTC pokušava uspostaviti
+izvedivu mrežnu putanju između sudionika. U stvarnim uvjetima većina klijenata
+ne posjeduje javnu IP adresu, već se nalazi iza usmjernika (engl.\
+\textit{router}), NAT (engl.\ \textit{Network Address Translation}) uređaja i
+vatrozida, što onemogućuje izravno adresiranje između dvaju računala. Kako bi
+unatoč tome ostvario \textit{peer-to-peer} komunikaciju, WebRTC koristi
+kombinaciju okvira ICE (engl.\ \textit{Interactive Connectivity Establishment})
+te STUN (engl.\ \textit{Session Traversal Utilities for NAT}) i TURN (engl.\
+\textit{Traversal Using Relays around NAT}) infrastrukture za tzv.\ NAT
+\textit{traversal}, odnosno pronalaženje puteva kroz mrežnu
+konfiguraciju~\cite{webrtcForTheCurious}.
+
+ICE na svakoj strani prikuplja različite mrežne „kandidate” — tzv. ICE
+kandidate (engl. \textit{ICE candidates}) — što uključuje lokalne adrese, javne
+adrese dobivene putem STUN poslužitelja te, po potrebi, relejske (engl.
+\textit{relay}) adrese dobivene preko TURN poslužitelja. Ti se kandidati zatim
+razmjenjuju signalizacijskim kanalom i sustavno testiraju kako bi se pronašao
+par kandidata preko kojih je moguće uspostaviti dvosmjernu komunikaciju uz što
+manju latenciju. Testiranje parova kandidata (engl.\ \textit{connectivity
+    checks}) prikazano je na slici~\ref{fig:webrtcConnectivityChecks}. Na slici se
+nalaze dva ICE agenta, svaki s po tri različita kandidata (što podrazumijeva
+ukupno devet parova kandidata). U idealnom slučaju odabire se izravna P2P
+putanja (npr.\ putem javne adrese otkrivene STUN-om), a ako to nije moguće zbog
+ograničenja NAT-a ili vatrozida, komunikacija se preusmjerava preko TURN
+poslužitelja koji djeluje kao relej između sudionika. Na taj način faza
+povezivanja dinamički prilagođava mrežnu putanju kako bi osigurala da se
+medijski tokovi mogu prenositi i u složenim mrežnim okruženjima, pri čemu se
+uvijek preferiraju najizravnije i najmanje „skupe”
+putanje~\cite{webrtcForTheCurious}.
+
+\begin{figure}[H]
+    \includegraphics[width=0.5\linewidth,clip=]{assets/webrtc-connectivity-checks.png}
+    \centering
+    \caption{ICE kandidati i testiranje parova (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/03-connectivity-checks.png}{webrtcforthecurious.com}})}\label{fig:webrtcConnectivityChecks}
+\end{figure}
+
+U trećoj fazi, \textbf{osiguravanju veze}, WebRTC osigurava da se svi medijski
+i podatkovni tokovi prenose sigurno. U tu svrhu koristi kombinaciju dvaju
+protokola: DTLS (engl.\ \textit{Datagram Transport Layer Security}) i SRTP
+(engl.\ \textit{Secure Real-time Transport Protocol}). DTLS je UDP inačica
+TLS-a koji se koristi u HTTPS-u, zadužen za sigurno pregovaranje kriptografskih
+parametara i razmjenu ključeva preko nepouzdanog UDP transporta, pri čemu štiti
+od prisluškivanja, krivotvorenja poruka i njihove izmjene u
+prijenosu~\cite{webrtcForTheCurious}.
+
+SRTP nadograđuje RTP tako da dodaje enkripciju sadržaja medijskih paketa,
+provjeru integriteta i zaštitu od ponovnog reproduciranja paketa (engl.\
+\textit{replay attacks}), ali pritom ostaje dovoljno lagan da zadovolji
+zahtjeve komunikacije u stvarnom vremenu. U WebRTC-u se ključevi koji se
+koriste u SRTP-u ne šalju kao \textit{plain-text}, već se izvode iz DTLS sesije
+u postupku poznatom kao DTLS-SRTP {--} najprije se između sudionika uspostavlja
+siguran DTLS kanal, zatim se iz njega generira potrebni ključni materijal za
+SRTP, a nakon toga se audio i video tokovi šifrirano prenose upravo preko
+SRTP-a. Time WebRTC zahtijeva da sav medijski promet bude enkriptiran i
+autentificiran, bez mogućnosti isključenja enkripcije u produkcijskim
+implementacijama, čime se krajnjim korisnicima osigurava visoka razina
+povjerljivosti i zaštite komunikacije~\cite{webrtcForTheCurious}.
+
+Konačno, završna faza odnosi se na \textbf{stvarnu komunikaciju}. WebRTC
+koristi dva protokola za stvarnu razmjenu podataka između sudionika: RTP i
+SCTP.\@ RTP je zadužen za prijenos audio i video tokova u stvarnom vremenu:
+paketi s medijskim okvirima nose vremenske oznake i redne brojeve, što
+omogućuje sinkronizaciju, detekciju gubitka paketa i prilagodbu reprodukcije
+mrežnim uvjetima. U WebRTC-u se RTP gotovo uvijek koristi u kombinaciji sa
+SRTP-om, koji dodaje enkripciju i zaštitu integriteta, pa se stvarni medijski
+promet prenosi kao SRTP paketi preko ranije uspostavljenog sigurnog kanala. Za
+proizvoljne podatkovne tokove WebRTC koristi SCTP (engl.\ \textit{Stream
+    Control Transmission Protocol}) inkapsuliran unutar DTLS-a, što omogućuje
+pouzdanu, redoslijednu komunikaciju između sudionika, uz logičko dijeljenje
+prometa u više neovisnih strujanja (engl.\
+\textit{streams})~\cite{webrtcForTheCurious}.
+
+\subsection{Ostali alati}
+
+Osim glavnih tehnologija koje su temelj aplikacije, u procesu razvoja korišteni
+su i brojni drugi alati koji su olakšali razvoj, verzioniranje, isporuku i
+održavanje k\^oda.
+
+Kao uređivač k\^oda korišten je \textbf{Visual Studio Code}, uz popularne
+ekstenzije za već prethosno spomenute tehnologije. \textbf{\texttt{git}} je
+korišten za verzioniranje k\^oda, uz \textbf{GitHub} kao odabranu platformu za
+objavu repozitorija. \textbf{Vercel} je odabran kao platforma za
+\textit{hosting} i \textit{deployment} Next.js aplikacije, zbog svoje duboke
+integracije s Next.js-om, automatskog skaliranja, globalne mreže isporuke
+sadržaja (CDN) i jednostavnog procesa isporuke putem integracije s GitHub-om.
+Platforma \textbf{Resend} korištena je za slanje obavijesti korisnicima
+e-poštom, zahvaljujući svojoj jednostavnosti, pouzdanosti i modernom API-ju
+koji se lako integrira s okruženjem Node.js.
