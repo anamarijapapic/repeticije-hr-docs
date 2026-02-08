@@ -96,7 +96,7 @@ na strani poslužitelja {--} SSR (engl.\ \textit{Server-Side Rendering}),
 statičko generiranje stranica {--} SSG (engl.\ \textit{Static Site Generation})
 te inkrementalno statičko obnavljanje {--} ISR (engl.\ \textit{Incremental
     Static Regeneration}), pri čemu se većina sadržaja isporučuje kao statički
-HTML, a pojedine stranice se povremeno regeneriraju kada se podaci promijene.
+HTML, a pojedine stranice se povremeno regeneriraju kada se podatci promijene.
 Next.js također automatski dijeli k\^od u manje dijelove (engl.\ \textit{code
     splitting}) i koristi usmjeravanje (engl.\ \textit{routing}) bazirano na
 strukturi direktorija, poznato kao \textit{file-based routing}. To znači da se
@@ -187,11 +187,11 @@ siguran (engl.\ \textit{type-safe}) pristup bazi podataka. U središtu Prisma
 pristupa nalazi se datoteka \texttt{schema.prisma} u kojoj se deklarativno
 definira shema podataka putem Prisma Schema Language (PSL) {--} definiraju se
 modeli, relacije i mapiranja na tablice u bazi, a Prisma na temelju te sheme
-automatski generira klijenta za pristup podacima, zajedno s odgovarajućim
+automatski generira klijenta za pristup podatcima, zajedno s odgovarajućim
 TypeScript tipovima. Time se postiže da su sve upite prema bazi moguće statički
 provjeriti u vrijeme prevođenja, uz bogatu podršku za automatsko dovršavanje i
 otkrivanje neispravnih upita prije pokretanja aplikacije, što smanjuje broj
-pogrešaka i ubrzava razvoj. Uz Prisma Client za rad s podacima, Prisma nudi i
+pogrešaka i ubrzava razvoj. Uz Prisma Client za rad s podatcima, Prisma nudi i
 alate za migracije (Prisma Migrate) te vizualni pregled podataka
 (Prisma Studio) koji olakšavaju upravljanje razvojnim i produkcijskim
 okruženjima.~\cite{prismaDocs}.
@@ -208,7 +208,7 @@ Docker okruženja, što olakšava repliciranje produkcijske baze u lokalnom
 okruženju i testiranje sheme podataka.~\cite{supabaseDocs}.
 
 U ovoj aplikaciji PostgreSQL služi kao temeljna baza podataka, Prisma ORM kao
-tipno siguran sloj pristupa podacima u okruženju Next.js/TypeScript, dok
+tipno siguran sloj pristupa podatcima u okruženju Next.js/TypeScript, dok
 Supabase pruža \textit{hosting} baze i \textit{real-time} funkcionalnosti, čime
 se dobiva skalabilan i moderni podatkovni sloj prilagođen potrebama web
 aplikacije za repeticije. Korištena su sljedeća izdanja tehnologija: PostgreSQL
@@ -217,7 +217,7 @@ aplikacije za repeticije. Korištena su sljedeća izdanja tehnologija: PostgreSQ
 \subsection{Komunikacijski sloj}
 
 Komunikacijski sloj u ovoj aplikaciji zadužen je za uspostavljanje i održavanje
-komunikacije u stvarnom vremenu između tutora i učenika tijekom online
+komunikacije u stvarnom vremenu između tutora i učenika tijekom \textit{online}
 repeticija. U tu svrhu koristi se \textbf{WebRTC} (engl.\ \textit{Web Real‑Time
     Communication}).
 
@@ -266,9 +266,9 @@ Microsofta, Applea, Intel Corporations, Cisca i Ericssona, a podrška je
 postupno uvedena u svim modernim web preglednicima, čime je WebRTC postao
 standardni mehanizam za \textit{in-browser} audio-video
 komunikaciju~\cite{webrtcRec}. Danas se primjenjuje u širokom spektru
-aplikacija, od video konferencija, do online igara, udaljenog upravljanja, IoT
-(engl.\ \textit{Internet of Things}) komunikacije i drugih scenarija koji
-zahtijevaju nisku latenciju i visoku kvalitetu prijenosa.
+aplikacija, od video konferencija, do \textit{online} igara, udaljenog
+upravljanja, IoT (engl.\ \textit{Internet of Things}) komunikacije i drugih
+scenarija koji zahtijevaju nisku latenciju i visoku kvalitetu prijenosa.
 
 \newpage
 
@@ -424,7 +424,7 @@ u postupku poznatom kao DTLS-SRTP {--} najprije se između sudionika uspostavlja
 siguran DTLS kanal, zatim se iz njega generira potrebni ključni materijal za
 SRTP, a nakon toga se audio i video tokovi šifrirano prenose upravo preko
 SRTP-a. Time WebRTC zahtijeva da sav medijski promet bude enkriptiran i
-autentificiran, bez mogućnosti isključenja enkripcije u produkcijskim
+autenticiran, bez mogućnosti isključenja enkripcije u produkcijskim
 implementacijama, čime se krajnjim korisnicima osigurava visoka razina
 povjerljivosti i zaštite komunikacije~\cite{webrtcForTheCurious}.
 

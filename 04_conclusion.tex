@@ -1,3 +1,23 @@
 \section{Zaključak}
 
-U zadnjem poglavlju dan je zaključak.
+U ovom diplomskom radu predstavljen je razvoj web aplikacije za povezivanje
+studenata i tutora koja pokriva proces od formiranja ponuda i rezervacije
+termina do održavanja repeticija, uz implementiranu podršku za online video
+pozive. Sustav je podijeljen na prezentacijski, aplikacijski, podatkovni i
+komunikacijski sloj, pri čemu odabrane tehnologije omogućuju skalabilnu i
+modularnu arhitekturu.
+
+Posebna pažnja posvećena je sigurnosti i pouzdanosti: implementirani su
+autentikacija i autorizacija s ulogama studenta, tutora i administratora,
+impersonacija radi lakšeg otklanjanja problema, zaštita API ruta preko
+\textit{proxy} i \textit{middleware} sloja, validacija vremenske zone te
+integracija Google Maps API-ja i automatiziranih \textit{cron} zadataka. Uz to,
+podrška za online repeticije putem WebRTC-a, sustav e-mail obavijesti i
+filtriranje ponuda prema lokaciji i dostupnosti tutora čine aplikaciju
+praktičnim alatom za organizaciju repeticija.
+
+Odabrani dizajn omogućuje daljnje proširenje funkcionalnosti (primjerice
+integracija plaćanja, internacionalizacija i sl.), ali je u prvoj verziji
+sustava svjesno primijenjen YAGNI princip kako bi rješenje ostalo razumljivo,
+održivo i fokusirano na ključne potrebe korisnika na lokalnom, hrvatskom
+tržištu.
