@@ -20,14 +20,14 @@ TypeScript, Node.js i \texttt{npm} čine temeljni tehnološki ekosustav u kojem
 se taj sloj razvija i izvršava.
 
 \textbf{Next.js} je razvojni okvir (engl.\ \textit{framework}) otvorenog k\^oda za React
-koji omogućava objedinjeni (engl.\ \textit{full-stack}) razvoj web aplikacija,
+koji omogućuje objedinjeni (engl.\ \textit{full-stack}) razvoj web aplikacija,
 što znači da obuhvaća razvoj i klijentskog (engl.\ \textit{front-end}) i
 poslužiteljskog (engl.\ \textit{back-end}) dijela aplikacije. Razvijen je od
 strane tvrtke Vercel, a izvorni k\^od dostupan je na platformi
 GitHub~\cite{nextJsGitHub} gdje je prva verzija objavljena 2016.\ godine.
 
 Temeljen je na JavaScriptu i izvršava se u okruženju \textbf{Node.js}, pri čemu
-Node.js omogućava pokretanje JavaScript k\^oda izvan preglednika, na
+Node.js omogućuje pokretanje JavaScript k\^oda izvan preglednika, na
 poslužitelju, što je preduvjet za poslužiteljsko renderiranje i izgradnju
 aplikacije~\cite{nodeJsAbout}. U praksi se Next.js projekti gotovo uvijek
 razvijaju uz \textbf{TypeScript}, nadskup JavaScripta razvijen od strane
@@ -36,19 +36,19 @@ prevođenja, čime se smanjuje broj pogrešaka u složenijim
 aplikacijama~\cite{typescriptDocs}.
 
 Upravljanje ovisnostima obavlja se putem \textbf{\texttt{npm}}-a (engl.\
-\textit{Node Package Manager}) ili alternativno
-\texttt{pnpm}/\texttt{yarn}/\texttt{bun} upravitelja paketa, koji omogućuju
-jednostavnu instalaciju, ažuriranje i skriptiranje razvojnih zadataka u
-okruženju Node.js. Paketi (biblioteke) se preuzimaju iz javnog repozitorija
-\href{https://www.npmjs.com/}{npmjs.com}, a definiraju se u datoteci
+\textit{Node Package Manager}) ili alternativno drugim upraviteljima paketa kao
+što su \texttt{pnpm}/\texttt{yarn}/\texttt{bun}, koji omogućuju jednostavnu
+instalaciju, ažuriranje i skriptiranje razvojnih zadataka u okruženju Node.js.
+Paketi (biblioteke) se preuzimaju iz javnog repozitorija
+\texttt{\href{https://www.npmjs.com/}{npmjs.com}}, a definiraju se u datoteci
 \texttt{package.json} unutar projekta, a pri instalaciji se kreira i datoteka
 \texttt{package-lock.json} koja zaključava točne verzije ovisnosti radi
-konzistentnog okruženja. U direktoriju \texttt{node\_modules} pohranjuju se sve
-instalirane ovisnosti projekta~\cite{npmDocs}.
+konzistentnog okruženja. U direktoriju\\ \texttt{node\_modules} pohranjuju se
+sve instalirane ovisnosti projekta~\cite{npmDocs}.
 
 \textbf{React} (React.js) je slobodan softver otvorenog k\^oda tzv. FOSS (engl.\
 \textit{Free and Open Source Software}). Riječ je o JavaScript biblioteci za
-izgradnju korisničkih sučelja, razvijenoj od strane Facebooka (sada Meta).
+izgradnju korisničkih sučelja koju je razvio Facebook (sada Meta).
 Programski k\^od javno je objavljen 2013.\ godine, a od tada je prigrljen od
 strane zajednice i pozicionirao se kao jedna od najpopularnijih biblioteka za
 razvoj web aplikacija~\cite{reactGitHub}.
@@ -63,8 +63,9 @@ da se sučelje sastoji od malih, ponovno iskoristivih komponenti koje
 enkapsuliraju logiku i prikaz pa se iste komponente mogu koristiti na više
 mjesta i u različitim projektima. Načelo \textit{„learn once, write anywhere”}
 odnosi se na činjenicu da se ista znanja i koncepti mogu primijeniti u web
-aplikacijama, ali i u izradi mobilnih (React Native) i desktop aplikacija, bez
-ponovnog učenja potpuno novog programskog modela~\cite{reactLegacy}.
+aplikacijama, ali i u izradi mobilnih (React Native) i \textit{desktop}
+aplikacija, bez ponovnog učenja potpuno novog programskog
+modela~\cite{reactLegacy}.
 
 React se temelji na konceptu komponenti, pri čemu se u povijesnom razvoju
 razlikuju klasne (engl.\ \textit{class}) komponente i funkcijske (engl.\
@@ -77,18 +78,18 @@ k\^oda. React koristi virtualni DOM {--} laganu, u memoriji pohranjenu
 reprezentaciju strukture korisničkog sučelja kako bi učinkovito uspoređivao
 prethodno i novo stanje te primjenjivao samo nužne promjene u stvarnom DOM-u,
 što značajno poboljšava performanse složenijih aplikacija. JSX (engl.\
-\textit{JavaScript XML}) je sintaksno proširenje za JavaScript koji omogućuje
+\textit{JavaScript XML}) je sintaksno proširenje za JavaScript koje omogućuje
 zapis komponenti u obliku HTML-u slične sintakse, pri čemu se JSX u pozadini
 prevodi u pozive funkcije \texttt{React.createElement}, a razvojnom programeru
 olakšava čitanje i strukturiranje k\^oda~\cite{reactReference}. U kombinaciji s
 TypeScriptom koristi se proširenje TSX (engl.\ \textit{TypeScript JSX}). U
-novijim verzijama React uvodi i \textit{Server Components} {--} komponente koje
-se izvršavaju isključivo na poslužitelju, generiraju HTML bez slanja JavaScript
+novijim verzijama React uvodi i Server Components {--} komponente koje se
+izvršavaju isključivo na poslužitelju, generiraju HTML bez slanja JavaScript
 k\^oda na klijent i tako smanjuju veličinu paketa te povećavaju sigurnost i
 performanse, osobito u kombinaciji s razvojnim okvirima poput Next.js-a.
 
-Next.js nadograđuje React dodajući brojne značajke i optimizacije koje
-olakšavaju izgradnju skalabilnih i visokoučinkovitih web aplikacija. Uvodi
+Next.js nadograđuje React dodavanjem brojnih značajki i optimizacija koje su
+olakšale izgradnju skalabilnih i visokoučinkovitih web aplikacija. Uvodi
 višestruke načine renderiranja stranica i napredne optimizacije koje su posebno
 važne za performanse i SEO.\@ Osim klasičnog renderiranja na strani klijenta
     {--} CSR (engl.\ \textit{Client-Side Rendering}), Next.js podržava renderiranje
@@ -154,21 +155,22 @@ jednoznačnih klasa za oblikovanje (npr.\ razmaci, boje, tipografija, raspored {
 fleksibilni i mrežni (engl.\ \textit{grid}) rasporedi). Te se klase kombiniraju
 izravno u markup-u ili JSX/TSX k\^odu, čime se smanjuje potreba za pisanjem
 zasebnih CSS datoteka i olakšava održavanje dosljednog dizajna u komponentnom
-pristupu Reacta. Tailwind je visokokonfigurabilan putem konfiguracijske
+pristupu Reacta. Tailwind se konfigurira putem konfiguracijske
 datoteke koja definira dizajnerske tokene (boje, tipografiju, radijuse,
 razmake), a u produkcijskom okruženju alat automatski uklanja neiskorištene klase
 (engl.\ \textit{tree shaking}), što rezultira malim konačnim CSS paketom i
 boljim performansama~\cite{tailwindDocsCoreConceptsStylingWithUtilityClasses}.
 
-U razvijenoj aplikaciji kombinacija predstavljenih UI biblioteka omogućava
+U razvijenoj aplikaciji kombinacija predstavljenih UI biblioteka omogućuje
 izradu modernog, responzivnog i pristupačnog korisničkog sučelja uz dobru
 ravnotežu između brzine razvoja, kontrole nad dizajnom i tehničke kvalitete.
 
 \subsection{Podatkovni sloj}
 
 Za pohranu podataka u aplikaciji koristi se relacijska baza podataka
-PostgreSQL, uz objektno-relacijsko mapiranje pomoću Prisma ORM-a i upravljani
-\textit{hosting} preko platforme Supabase.
+PostgreSQL, uz objektno-relacijsko mapiranje pomoću Prisma ORM-a (engl.\
+\textit{Object-Relational Mapper}) i upravljani \textit{hosting} preko
+platforme Supabase.
 
 \textbf{PostgreSQL} (Postgres) snažan je sustav za upravljanje relacijskim bazama
 podataka (engl.\ \textit{RDBMS {--} Relational Database Management System})
@@ -179,22 +181,21 @@ PostgreSQL osim klasičnih relacijskih tablica podržava i pohranu
 polustrukturiranih podataka (npr.\ JSON/JSONB tipovi, polja, geografski
 tipovi), što ga čini pogodnim za moderne web aplikacije koje kombiniraju strogo
 strukturirane podatke (npr.\ korisnici, termini rezervacija, recenzije) s
-fleksibilnijim strukturama.~\cite{postgreSqlAbout}.
+fleksibilnijim strukturama~\cite{postgreSqlAbout}.
 
-\textbf{Prisma ORM} (engl.\ \textit{Object-Relational Mapper}) je biblioteka za
-objektno-relacijsko mapiranje za Node.js i TypeScript koji omogućuje tipno
-siguran (engl.\ \textit{type-safe}) pristup bazi podataka. U središtu Prisma
-pristupa nalazi se datoteka \texttt{schema.prisma} u kojoj se deklarativno
-definira shema podataka putem Prisma Schema Language (PSL) {--} definiraju se
-modeli, relacije i mapiranja na tablice u bazi, a Prisma na temelju te sheme
-automatski generira klijenta za pristup podatcima, zajedno s odgovarajućim
-TypeScript tipovima. Time se postiže da su sve upite prema bazi moguće statički
-provjeriti u vrijeme prevođenja, uz bogatu podršku za automatsko dovršavanje i
-otkrivanje neispravnih upita prije pokretanja aplikacije, što smanjuje broj
-pogrešaka i ubrzava razvoj. Uz Prisma Client za rad s podatcima, Prisma nudi i
-alate za migracije (Prisma Migrate) te vizualni pregled podataka
-(Prisma Studio) koji olakšavaju upravljanje razvojnim i produkcijskim
-okruženjima.~\cite{prismaDocs}.
+\textbf{Prisma ORM} je biblioteka za objektno-relacijsko mapiranje za Node.js i
+TypeScript koja omogućuje tipno siguran (engl.\ \textit{type-safe}) pristup
+bazi podataka. U središtu Prisma pristupa nalazi se datoteka
+\texttt{schema.prisma} u kojoj se deklarativno definira shema podataka putem
+Prisma Schema Language (PSL) {--} definiraju se modeli, relacije i mapiranja na
+tablice u bazi, a Prisma na temelju te sheme automatski generira klijenta za
+pristup podatcima, zajedno s odgovarajućim TypeScript tipovima. Time se postiže
+da je sve upite prema bazi moguće statički provjeriti u vrijeme prevođenja, uz
+bogatu podršku za automatsko dovršavanje i rano otkrivanje neispravnih upita
+prije pokretanja aplikacije, što smanjuje broj pogrešaka i ubrzava razvoj. Uz
+Prisma Client za rad s podatcima, Prisma nudi i alate za migracije (Prisma
+Migrate) te vizualni pregled podataka (Prisma Studio) koji olakšavaju
+upravljanje razvojnim i produkcijskim okruženjima~\cite{prismaDocs}.
 
 \textbf{Supabase} je platforma otvorenog k\^oda tipa \textit{„backend kao usluga”}
 (engl.\ \textit{Backend-as-a-Service}) izgrađena na PostgreSQL-u, koja nudi
@@ -205,7 +206,7 @@ ugrađenu podršku za sigurnost na razini retka (engl.\ \textit{Row-Level
     Security}) i mogućnost „osluškivanja” promjena u tablicama u stvarnom vremenu
 putem WebSocketa. Supabase pruža i CLI alat te mogućnost lokalnog razvoja putem
 Docker okruženja, što olakšava repliciranje produkcijske baze u lokalnom
-okruženju i testiranje sheme podataka.~\cite{supabaseDocs}.
+okruženju i testiranje sheme podataka~\cite{supabaseDocs}.
 
 U ovoj aplikaciji PostgreSQL služi kao temeljna baza podataka, Prisma ORM kao
 tipno siguran sloj pristupa podatcima u okruženju Next.js/TypeScript, dok
@@ -236,7 +237,7 @@ slučaju mobilnih aplikacija. Krajnji korisnici mogu izmjenjivati audio, video i
 podatke bez potrebe za dodatcima ili posebnim softverom. WebRTC se sastoji od
 WebRTC protokola i WebRTC API-ja specificiranog za JavaScript, dok je za
 nativne klijente dostupna biblioteka koja pruža iste
-funkcionalnosti.~\cite{webrtcOrg} Izvorni k\^od dostupan je u repozitoriju na
+funkcionalnosti~\cite{webrtcOrg}. Izvorni k\^od dostupan je u repozitoriju na
 poveznici
 \texttt{\href{https://webrtc.googlesource.com/src}{webrtc.googlesource.com/src}}.
 
@@ -410,9 +411,9 @@ U trećoj fazi, \textbf{osiguravanju veze}, WebRTC osigurava da se svi medijski
 i podatkovni tokovi prenose sigurno. U tu svrhu koristi kombinaciju dvaju
 protokola: DTLS (engl.\ \textit{Datagram Transport Layer Security}) i SRTP
 (engl.\ \textit{Secure Real-time Transport Protocol}). DTLS je UDP inačica
-TLS-a koji se koristi u HTTPS-u, zadužen za sigurno pregovaranje kriptografskih
-parametara i razmjenu ključeva preko nepouzdanog UDP transporta, pri čemu štiti
-od prisluškivanja, krivotvorenja poruka i njihove izmjene u
+TLS-a koji se koristi u HTTPS-u, zadužena za sigurno pregovaranje
+kriptografskih parametara i razmjenu ključeva preko nepouzdanog UDP transporta,
+pri čemu štiti od prisluškivanja, krivotvorenja poruka i njihove izmjene u
 prijenosu~\cite{webrtcForTheCurious}.
 
 SRTP nadograđuje RTP tako da dodaje enkripciju sadržaja medijskih paketa,
@@ -435,8 +436,8 @@ paketi s medijskim okvirima nose vremenske oznake i redne brojeve, što
 omogućuje sinkronizaciju, detekciju gubitka paketa i prilagodbu reprodukcije
 mrežnim uvjetima. U WebRTC-u se RTP gotovo uvijek koristi u kombinaciji sa
 SRTP-om, koji dodaje enkripciju i zaštitu integriteta, pa se stvarni medijski
-promet prenosi kao SRTP paketi preko ranije uspostavljenog sigurnog kanala. Za
-proizvoljne podatkovne tokove WebRTC koristi SCTP (engl.\ \textit{Stream
+promet prenosi putem SRTP paketa preko ranije uspostavljenog sigurnog kanala.
+Za proizvoljne podatkovne tokove WebRTC koristi SCTP (engl.\ \textit{Stream
     Control Transmission Protocol}) inkapsuliran unutar DTLS-a, što omogućuje
 pouzdanu, redoslijednu komunikaciju između sudionika, uz logičko dijeljenje
 prometa u više neovisnih strujanja (engl.\
@@ -449,12 +450,12 @@ su i brojni drugi alati koji su olakšali razvoj, verzioniranje, isporuku i
 održavanje k\^oda.
 
 Kao uređivač k\^oda korišten je \textbf{Visual Studio Code}, uz popularne
-ekstenzije za već prethosno spomenute tehnologije. \textbf{\texttt{git}} je
-korišten za verzioniranje k\^oda, uz \textbf{GitHub} kao odabranu platformu za
-objavu repozitorija. \textbf{Vercel} je odabran kao platforma za
-\textit{hosting} i \textit{deployment} Next.js aplikacije, zbog svoje duboke
-integracije s Next.js-om, automatskog skaliranja, globalne mreže isporuke
-sadržaja (CDN) i jednostavnog procesa isporuke putem integracije s GitHub-om.
-Platforma \textbf{Resend} korištena je za slanje obavijesti korisnicima
-e-poštom, zahvaljujući svojoj jednostavnosti, pouzdanosti i modernom API-ju
-koji se lako integrira s okruženjem Node.js.
+ekstenzije za već prethodno spomenute tehnologije. \textbf{Git} je korišten za
+verzioniranje k\^oda, uz \textbf{GitHub} kao odabranu platformu za objavu
+repozitorija. \textbf{Vercel} je odabran kao platforma za \textit{hosting} i
+\textit{deployment} Next.js aplikacije, zbog svoje duboke integracije s
+Next.js-om, automatskog skaliranja, globalne mreže isporuke sadržaja (CDN) i
+jednostavnog procesa isporuke putem integracije s GitHub-om. Platforma
+\textbf{Resend} korištena je za slanje obavijesti korisnicima e-poštom,
+zahvaljujući svojoj jednostavnosti, pouzdanosti i modernom API-ju koji se lako
+integrira s okruženjem Node.js.

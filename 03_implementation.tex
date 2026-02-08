@@ -19,12 +19,12 @@ poslužitelj nad prethodno izgrađenom verzijom aplikacije. Skripta
 \texttt{eslint} služi za pokretanje alata ESLint, koji automatski provjerava
 stil i potencijalne pogreške u JavaScript/TypeScript k\^odu.
 
-Dobra je praksa i odmah inicijalizirati \texttt{git} repozitorij u projektu,
-što se može učiniti naredbom \texttt{git init}. To omogućuje praćenje promjena
-i upravljanje verzijama k\^oda tijekom razvoja.
+Dobra je praksa i odmah inicijalizirati Git repozitorij u projektu, što se može
+učiniti naredbom \texttt{git init}. To omogućuje praćenje promjena i
+upravljanje verzijama k\^oda tijekom razvoja.
 
-Također, preporučljivo je postaviti i formatiranje k\^oda, što se može postići
-instalacijom i konfiguracijom alata poput Prettiera kako bi se osigurava
+Također, preporučeno je postaviti i formatiranje k\^oda, što se može postići
+instalacijom i konfiguracijom alata poput Prettiera kako bi se osigurao
 dosljedan stil k\^oda. EditorConfig datoteka također može pomoći u održavanju
 dosljednosti postavki između različitih uređivača k\^oda i razvojnih okruženja.
 
@@ -35,10 +35,10 @@ dosljednosti postavki između različitih uređivača k\^oda i razvojnih okruže
 Osnovna struktura \textit{root} direktorija implementirane Next.js aplikacije
 jest sljedeća:\\ \dirtree{.1 repeticije-hr/. .2 {.next/}. .2 app/. .2
   calendar/. .2 components/. .2 data/. .2 lib/. .2 middleware/. .2
-  node\_modules/. .2 prisma/. .2 public/. .2 scripts/. .2 supabase/. .2
-    {.editorconfig}. .2 {.env}. .2 {.env.example}. .2 {.gitignore}. .2
-    {.prettierrc.json}. .2 components.json. .2 eslint.config.mjs. .2 next-env.d.ts.
-  .2 next.config.ts. .2 package-lock.json. .2 package.json. .2
+  node\_modules/. .2 prisma/. .2 public/. .2 scripts/. .2 services/. .2
+  supabase/. .2 {.editorconfig}. .2 {.env}. .2 {.env.example}. .2 {.gitignore}.
+  .2 {.prettierrc.json}. .2 components.json. .2 eslint.config.mjs. .2
+  next-env.d.ts. .2 next.config.ts. .2 package-lock.json. .2 package.json. .2
   postcss.config.mjs. .2 prisma.config.ts. .2 proxy.ts. .2 README.md. .2
   tsconfig.json. .2 vercel.json. }%
 
@@ -54,8 +54,9 @@ jest sljedeća:\\ \dirtree{.1 repeticije-hr/. .2 {.next/}. .2 app/. .2
   \item \texttt{prisma/} {--}  Sadrži datoteku \texttt{schema.prisma} s modelom baze podataka, SQL migracije te skriptu \texttt{seed.ts} za inicijalno popunjavanje baze.
   \item \texttt{public/} {--}  Statički resursi (slike, ikone, SVG-ovi i sl.) koji su javno dostupni bez dodatne obrade na poslužiteljskoj strani.
   \item \texttt{scripts/} {--}  Pomoćne skripte za održavanje i pozadinske zadatke (npr.\ \textit{cron} skripta za automatsko ažuriranje statusa rezervacija).
+  \item \texttt{services/} {--}  Implementacija poslovne logike aplikacije, koja koristi repozitorije za pristup podatcima i implementira funkcionalnosti specifične za domenu.
   \item \texttt{supabase/} {--}  Konfiguracijske datoteke i dokumentacija za lokalno okruženje Supabase i migracije baze.
-  \item \texttt{.editorconfig} {--}  Datoteka s pravilima formatiranja k\^oda za različite editore.
+  \item \texttt{.editorconfig} {--}  Datoteka s pravilima formatiranja k\^oda za različite uređivače k\^oda.
   \item \texttt{.env}, \texttt{.env.example} {--}  Datoteke s konfiguracijskim varijablama okruženja (stvarna konfiguracija i ogledni primjer).
   \item \texttt{.gitignore} {--}  Definira koje datoteke i direktoriji se isključuju iz verzioniranja.
   \item \texttt{.prettierrc.json} {--}  Konfiguracija za Prettier formatiranje k\^oda.
@@ -65,12 +66,12 @@ jest sljedeća:\\ \dirtree{.1 repeticije-hr/. .2 {.next/}. .2 app/. .2
   \item \texttt{next.config.ts} {--}  Glavna konfiguracijska datoteka Next.js aplikacije (\textit{build} postavke, usmjeravanje, integracije).
   \item \texttt{package-lock.json} {--}  Zaključane verzije \texttt{npm} paketa za determinističke instalacije.
   \item \texttt{package.json} {--}  Metapodatci o projektu te popis \texttt{npm} skripti i ovisnosti.
-  \item \texttt{postcss.config.mjs} {--}  Konfiguracija za PostCSS pipeline (npr. Tailwind CSS).
+  \item \texttt{postcss.config.mjs} {--}  Konfiguracija za PostCSS \textit{pipeline} (npr. Tailwind CSS).
   \item \texttt{prisma.config.ts} {--}  Pomoćne postavke i funkcije povezane s Prismom i bazom podataka.
   \item \texttt{proxy.ts} {--}  Implementira \textit{proxy} logiku i zaštitu API ruta; koristi \textit{middleware} funkcije za kontrolu pristupa.
   \item \texttt{README.md} {--}  Osnovna projektna dokumentacija i upute za pokretanje.
   \item \texttt{tsconfig.json} {--}  Konfiguracija TypeScript kompajlera.
-  \item \texttt{vercel.json} {--}  Konfiguracija \textit{deploya} na platformu Vercel, uključujući \textit{cron} zadatke i specifične postavke okruženja.
+  \item \texttt{vercel.json} {--}  Konfiguracija \textit{deploymenta} na platformu Vercel.
 \end{itemize}
 
 \subsubsection{Struktura \texttt{app/} direktorija}
@@ -90,7 +91,7 @@ uloge u organizaciji k\^oda i implementaciji poslovne logike aplikacije. Unutar
   \item \texttt{generated/} {--} Direktorij u koji Prisma generira klijentski k\^od (Prisma Client) i povezane tipove, koji se potom koriste u poslužiteljskim dijelovima Next.js aplikacije za pristup bazi podataka.
   \item \texttt{apple-icon.png}, \texttt{favicon.ico}, \texttt{icon0.svg}, \texttt{icon1.png} {--} Ikone aplikacije koje se koriste u preglednicima i pri instalaciji kao progresivna web aplikacija (PWA), npr.\ za prikaz na početnom zaslonu mobilnog uređaja.
   \item \texttt{globals.css} {--} Datoteka s globalnim CSS stilovima koji se učitavaju jednom te vrijede za cijelu aplikaciju.
-  \item \texttt{layout.tsx} {--} Korijenski \texttt{layout} App Routera koji definira zajedničku strukturu stranica (npr.\ zaglavlje, podnožje i pružatelje konteksta).
+  \item \texttt{layout.tsx} {--} Korijenski \textit{layout} App Routera koji definira zajedničku strukturu stranica (npr.\ zaglavlje, podnožje i pružatelje konteksta).
   \item \texttt{manifest.json} {--} PWA manifest koji opisuje osnovne metapodatke aplikacije te omogućuje „instaliranje” aplikacije na uređaj.
 \end{itemize}
 
@@ -108,15 +109,15 @@ njihove međusobne odnose i komunikaciju.
 
 \subsection{Rad s bazom podataka}
 
-Aplikacija koristi bazu podataka PostgreSQL \textit{hostanu} na platformi
-Supabase kao centralno spremište svih trajnih podataka o korisnicima, ponudama
+Aplikacija koristi bazu podataka PostgreSQL upravljanu na platformi Supabase
+kao centralno spremište svih trajnih podataka o korisnicima, ponudama
 repeticija, rezervacijama termina, recenzijama i ostalim entitetima domene. Za
 pristup bazi koristi se Prisma ORM, koji se na Supabase Postgres spaja putem
 stringa za povezivanje (engl.\ \textit{connection string}) preuzetog iz
 Supabase sučelja i definiranog u varijablama okruženja aplikacije. Na taj se
-način kombiniraju prednosti Supabase platforme (upravljani PostgreSQL,
-sigurnost, nadzor) i Prisma ORM-a (tipizirani upiti, migracije, generirani
-klijent), bez potrebe za održavanjem vlastite baze.
+način kombiniraju prednosti Supabasea (upravljani PostgreSQL, sigurnost,
+nadzor) i Prisma ORM-a (tipizirani upiti, migracije, generirani klijent), bez
+potrebe za održavanjem vlastite baze.
 
 \subsubsection{Postavljanje i postupci nad bazom podataka}
 
@@ -127,7 +128,7 @@ kao varijable \texttt{DATABASE\_URL} i \texttt{DIRECT\_URL}. Te se varijable
 koriste za konfiguraciju Prisma ORM-a pri inicijalizaciji, omogućujući mu da se
 poveže na PostgreSQL bazu unutar Supabase okruženja.
 
-Prisma ORM služi kao apstrakcijski sloj između domenskog koda i baze podataka
+Prisma ORM služi kao apstrakcijski sloj između domenskog k\^oda i baze podataka
 PostgreSQL.\@ U datoteci \texttt{schema.prisma} definiraju se modeli koji
 preslikavaju domenske entitete na tablice u bazi podataka, uključujući tipove
 stupaca, primarne i strane ključeve te kardinalitet veza. Na temelju te
@@ -168,10 +169,10 @@ model TutorSubject {
 Svaki model odgovara jednoj tablici u bazi podataka, a polja unutar modela
 definiraju stupce tablice, njihove tipove i odnose s drugim modelima.
 
-Migracije baze podataka kreirane su pomoću Prisma migracija, koje se izvršavaju
+Migracije baze podataka kreirane su pomoću Prisma Migrate te se izvršavaju
 naredbom: \texttt{npx prisma migrate dev} nakon definiranja ili izmjene modela
-u \texttt{schema.prisma}. Ova naredba generira SQL migracijske datoteke koje se
-zatim primjenjuju na bazu podataka, stvarajući potrebne tablice i odnose.
+u\\ \texttt{schema.prisma}. Ova naredba generira SQL migracijske datoteke koje
+se zatim primjenjuju na bazu podataka, stvarajući potrebne tablice i odnose.
 
 Prisma klijent generira se naredbom: \texttt{npx prisma generate} nakon
 definiranja modela, čime se omogućuje korištenje tipiziranog API-ja za pristup
@@ -190,7 +191,7 @@ povući ili primijeniti promjene nad bazom (\texttt{supabase db pull},
 podataka. Za lokalni razvoj korištene su naredbe \texttt{supabase start} i
 \texttt{supabase stop}, kojima se pokreće, odnosno zaustavlja kompletan lokalni
 Supabase \textit{stack}, što olakšava reprodukciju produkcijskog okruženja na
-razvojnom računalu.
+razvojnom računalu~\cite{supabaseDocs}.
 
 \subsubsection{Dijagram relacijske baze podataka}
 
@@ -204,7 +205,7 @@ Relacijska baza podataka sastoji se od 11 tablica:
 \begin{itemize}
   \item \texttt{\_prisma\_migrations} {--} tablica koju koristi Prisma za praćenje izvršenih migracija baze podataka.
   \item \texttt{User} {--} glavna tablica koja pohranjuje osnovne podatke o korisnicima.
-  \item \texttt{Session}, \texttt{Account}, \texttt{Verification} {--} tablice koje, uz \texttt{User}, koristi autentikacijska biblioteka \texttt{better\_auth}.
+  \item \texttt{Session}, \texttt{Account}, \texttt{Verification} {--} tablice koje, uz \texttt{User}, koristi autentikacijska biblioteka Better Auth.
   \item \texttt{Subject} {--} tablica koja pohranjuje informacije o predmetima.
   \item \texttt{TutorSubject} {--} povezna tablica koja modelira mnogostruku vezu između tablica \texttt{User} (tutor) i \texttt{Subject}.
   \item \texttt{TutorAvailability} {--} tablica koja pohranjuje dostupnost tutora za pojedine dane i vremenske intervale.
@@ -347,8 +348,9 @@ dijeljenje zajedničkog izgleda i elemenata sučelja između više ruta. Datotek
 rute u aplikaciji, dok se dodatne \texttt{layout.tsx} datoteke mogu nalaziti u
 podmapama kako bi se definirali specifični izgledi za pojedine sekcije, npr.\
 za korisničko sučelje nakon prijave ili za administratorsko sučelje. Svaki
-layout obavija pripadne stranice, čime se postiže nasljeđivanje i ponovno
-korištenje zajedničkih elemenata kao što su navigacija, zaglavlje ili podnožje.
+\textit{layout} obavija pripadne stranice, čime se postiže nasljeđivanje i
+ponovno korištenje zajedničkih elemenata kao što su navigacija, zaglavlje ili
+podnožje.
 
 Dinamički segmenti ruta definiraju se korištenjem uglatih zagrada u nazivima
 direktorija, npr.\ \texttt{app/subjects/[id]/page.tsx} definira rutu
@@ -359,7 +361,7 @@ repeticija, rezervacije i sl.) bez potrebe za ručnim definiranjem ruta.
 
 Opisani mehanizam usmjeravanja omogućuje da se korisničko sučelje i API krajevi
 organiziraju na konzistentan način unutar istog \texttt{app/} direktorija, pri
-čemu se čitljivost i održavanje koda poboljšavaju zahvaljujući jasnom
+čemu se čitljivost i održavanje k\^oda poboljšavaju zahvaljujući jasnom
 preslikavanju između strukture datoteka i URL putanja aplikacije.
 
 U ispisu~\ref{lst:apiRouteExample} prikazan je primjer implementacije API rute
@@ -453,8 +455,8 @@ se biblioteka \textbf{Better Auth}, namijenjena modernim JavaScript i
 TypeScript aplikacijama te integrirana s Next.js okvirom i Prisma ORM-om.
 Better Auth pruža funkcionalnosti za upravljanje korisničkim računima,
 \textit{heširanje} lozinki, upravljanje sesijama i različite strategije
-autentikacije (email/lozinka, OAuth i dr.), pri čemu sav osjetljivi podatkovni
-sloj ostaje u PostgreSQL-u, a biblioteka generira tipizirani API za
+autentikacije (e-pošta/lozinka, OAuth i dr.), pri čemu sav osjetljivi
+podatkovni sloj ostaje u PostgreSQL-u, a biblioteka generira tipizirani API za
 autentikaciju i autorizaciju~\cite{betterAuthDocs}.
 
 Instalacija biblioteke Better Auth obavlja se dodavanjem paketa u projekt
@@ -465,7 +467,7 @@ određivanje baznog URL-a aplikacije. Zatim se u datoteci \texttt{lib/auth.ts}
 (prikazanoj u ispisu~\ref{lst:betterAuthConfig}) inicijalizira Better Auth
 instanca, pri čemu se konfigurira povezivanje s Prisma ORM-om i bazom podataka
 te odabiru metode autentikacije koje će se koristiti u aplikaciji (u ovom
-slučaju email/lozinka). Na temelju te konfiguracije Better Auth generira
+slučaju e-pošta/lozinka). Na temelju te konfiguracije Better Auth generira
 potrebne strukture u bazi podataka (tablice i polja za korisnike, sesije i
 povezane entitete) te izlaže rutu \texttt{/api/auth/[\ldots all]} kojom se
 centralizira sav promet vezan uz autentikaciju.
@@ -473,13 +475,13 @@ centralizira sav promet vezan uz autentikaciju.
 Na klijentskoj strani definiran je pomoćni modul (npr.\
 \texttt{lib/auth-client.ts}) u kojem se, korištenjem \texttt{createAuthClient}
 funkcije, inicijalizira klijentska instanca Better Auth-a i konfiguriraju
-dodaci koje će koristiti korisničko sučelje. Ovaj modul izlaže funkcije za
+dodatci koje će koristiti korisničko sučelje. Ovaj modul izlaže funkcije za
 registraciju, prijavu, odjavu i dohvat podataka o trenutno prijavljenom
 korisniku, koje se pozivaju iz React komponenti stranica za prijavu,
-registraciju i reset lozinke, čime se smanjuje dupliciranje koda i
+registraciju i reset lozinke, čime se smanjuje dupliciranje k\^oda i
 pojednostavljuje upravljanje autentikacijom u korisničkom sučelju.
 
-\begin{lstlisting}[caption={Konfiguracija Better biblioteke Auth i Admin plugina},label={lst:betterAuthConfig}]
+\begin{lstlisting}[caption={Konfiguracija biblioteke Better Auth i \textit{Admin} dodatka},label={lst:betterAuthConfig}]
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { adminPlugin } from "better-auth/plugins/admin";
@@ -530,7 +532,7 @@ koja je omogućena globalnim CSS-om i može se primijeniti na cijelu aplikaciju.
 
 Za naprednije upravljanje korisnicima i ulogama koristi se \textit{Admin}
 dodatak Better Auth biblioteke, koji dodaje administratorske operacije poput
-kreiranja računa, izmjene uloga, zabrane (ban) i impersonacije
+kreiranja računa, izmjene uloga, zabrane i impersonacije
 korisnika~\cite{betterAuthDocs}. Prava pristupa definiraju se u zasebnoj
 datoteci \texttt{permissions.ts} (ispis~\ref{lst:permissionsFile}), korištenjem
 pristupnog kontrolera (\texttt{createAccessControl}), gdje se opisuju dopuštene
@@ -730,7 +732,7 @@ Pri dizajnu ovog sustava validacije primijenjen je tzv. YAGNI princip
 (\textit{You Aren't Gonna Need It}). Umjesto da se unaprijed implementira
 potpuna međunarodna podrška (spremanje korisničke vremenske zone u model
 korisnika, konverzije za svakog sudionika, globalni selektori zona), početna
-verzija ograničena je na skup CET/CEST zona koji pokriva ciljnu skupinu
+verzija ograničena je na skup CET/CEST zona koji pokriva ciljanu skupinu
 korisnika.
 
 Centralna logika za rad s vremenskim zonama nalazi se u modulu\\
@@ -744,10 +746,10 @@ validacija vremenske zone integrirana u ključne ekrane aplikacije.
 
 \subsection{Integracija Google Maps API-ja}
 
-Integracija Google Maps servisa u aplikaciji koristi Maps JavaScript API,
+Integracija servisa Google Maps u aplikaciji koristi Maps JavaScript API,
 Geocoding i Places kako bi se omogućilo automatsko popunjavanje (engl.\
-autocomplete) adresa, geokodiranje na poslužitelju te filtriranje i validacija
-ponuda prema udaljenosti.
+\textit{autocomplete}) adresa, geokodiranje na poslužitelju te filtriranje i
+validacija ponuda prema udaljenosti.
 
 Aplikacija je podijeljena na klijentski i poslužiteljski sloj. Klijentski sloj
 učitava biblioteke Maps JavaScript API i Places preko React \textit{provider}
@@ -765,8 +767,8 @@ Na temelju toga implementirano je polje s \textit{autocomplete}
 funkcionalnošću: korisnik upisuje adresu ili grad, komponenta prikazuje
 prijedloge iz Places API-ja, a nakon odabira dohvaća normalizirani tekst i
 geografske koordinate koje se šalju \textit{backendu} kao numeričke vrijednosti
-(latitude/longitude). Te koordinate služe i za prikaz lokacije na karti i za
-lokalne UI filtre.
+(\textit{latitude/longitude}). Te koordinate služe i za prikaz lokacije na
+karti i za lokalne UI filtre.
 
 Na poslužiteljskoj strani servisi za ponude i tutore koriste Geocoding API kako
 bi iz korisničkih upita (npr.\ „Split”) i tekstualnih adresa tutora dobili
@@ -796,8 +798,8 @@ enumeraciju\\ \texttt{LessonMode} s barem dvije vrijednosti: \texttt{ONLINE} i
 \texttt{ONSITE}. Na taj se način u poslovnoj logici i korisničkom sučelju jasno
 razlikuju \textit{online} i nastava uživo, iako dijele zajedničke entitete kao
 što su ponude, rezervacije i profili korisnika. U sučelju filtriranje i prikaz
-ponuda repeticija razdvajaju \textit{online} i onsite ponude, a kod slanja
-obavijesti i e-mailova za \textit{online} lekcije adresa lokacije je
+ponuda repeticija jasno razdvaja \textit{online} i \textit{onsite} ponude, a
+kod slanja obavijesti e-poštom za \textit{online} lekcije adresa lokacije je
 \texttt{null} te se u predlošku prikazuje oznaka „\textit{Online}” umjesto
 fizičke adrese.
 
@@ -814,7 +816,7 @@ sastanke. Inicijalizacija sobe implementirana je u klijentskoj React komponenti
 \texttt{RoomCall}, koja upravlja signalizacijskim klijentom, lokalnim medijskim
 tokovima i mapom WebRTC veza prema ostalim sudionicima. Pri pokretanju poziva
 komponenta najprije pribavlja lokalni audio i video tok korisnika, kao u
-sljedećem isječku koda:
+sljedećem ispisu k\^oda:
 
 \begin{lstlisting}[caption={Pribavljanje lokalnog audio i video toka},label={lst:getUserMedia}]
 const stream = await navigator.mediaDevices.getUserMedia({
@@ -853,29 +855,29 @@ Kod završetka poziva implementiran je postupak čišćenja: zaustavljanje
 lokalnih \texttt{MediaStreamTrack} objekata, uklanjanje udaljenih
 \textit{streamova} i zatvaranje svih \texttt{RTCPeerConnection} instanci.
 
-\subsection{Slanje obavijesti putem e-maila}
+\subsection{Slanje obavijesti putem e-pošte i Resend integracija}
 
-Sustav obavijesti putem e-maila temelji se na predlošcima i centralnom
+Sustav obavijesti putem e-pošte temelji se na predlošcima i centralnom
 servisu\\ \texttt{EmailService}. Ovaj servis renderira React predloške za
 pojedine scenarije (potvrda rezervacije, novi zahtjev, odobrenje ili odbijanje
 termina, promjena i otkazivanje) te preko konfiguriranog pružatelja usluge
 šalje poruke korisnicima. Svaki predložak prima potrebne podatke (ime
-sudionika, predmet, datum i vrijeme, način izvođenja itd.) i generira e-mail u
-skladu s potrebama aplikacije.
+sudionika, predmet, datum i vrijeme, način izvođenja itd.) i generira poruku
+e-pošte u skladu s potrebama aplikacije.
 
 U trenutnoj fazi razvoja koristi se zamjenska konfiguracija za lokalno i testno
-slanje e-mailova na platformi Resend. Podešavanje uključuje definiranje
-varijabli okruženja \texttt{RESEND\_API\_KEY} i
+slanje e-pošte na platformi Resend. Podešavanje uključuje definiranje varijabli
+okruženja\\ \texttt{RESEND\_API\_KEY} i
 \texttt{RESEND\_FROM\_EMAIL}~\cite{resendDocs}, nakon čega se u
 \texttt{EmailService} implementira funkcija \texttt{sendEmail} koja koristi
 Resend API za slanje poruka.
 
-Primjer testnog dolaznog e-maila prikazan je na slici~\ref{fig:testEmail}.
+Primjer testnog dolaznog e-pošte prikazan je na slici~\ref{fig:testEmail}.
 
 \begin{figure}[H]
   \includegraphics[width=0.8\linewidth,clip]{assets/resend-test-email.png}
   \centering
-  \caption{Primjer testnog e-maila poslanog preko Resend API-ja}\label{fig:testEmail}
+  \caption{Primjer testne poruke e-pošte poslane preko Resend API-ja}\label{fig:testEmail}
 \end{figure}
 
 \subsection{Automatizirani \textit{cron} zadatci}
@@ -883,9 +885,8 @@ Primjer testnog dolaznog e-maila prikazan je na slici~\ref{fig:testEmail}.
 Za ponavljajuće poslove u sustavu predviđeni su automatizirani \textit{cron}
 zadatci koji periodično pozivaju metode u servisnom sloju. Tipičan primjer je
 kompletiranje prošlih rezervacija {--} servis za rezervacije pronalazi sve
-zapise čiji je izračunati kraj termina manji ili jednak trenutnom vremenu,
-ažurira im status na \texttt{COMPLETED} i, po potrebi, šalje obavijesti
-sudionicima.
+zapise čiji je izračunati kraj termina manji ili jednak trenutnom vremenu te im
+ažurira status na \texttt{COMPLETED}.
 
 Na produkcijskom okruženju periodično pokretanje ovih zadataka ostvareno je
 pomoću Vercel \textit{cron} mehanizma. U konfiguracijskoj datoteci
@@ -936,8 +937,8 @@ Svaki prijavljeni korisnik, bez obzira na ulogu, ima pristup stranici gdje može
 pregledati i urediti svoje osobne podatke i avatar, promijeniti lozinku i
 upravljati postavkama računa.
 
-Studenti, nakon prijave, dobivaju pristup nadzornoj ploči gdje imaju pristup
-sljedećim funkcionalnostima:
+Studenti, nakon prijave, mogu pristupiti nadzornoj ploči gdje imaju izbor
+između sljedećih funkcionalnosti:
 \begin{itemize}
   \item Analitika: Prikaz osnovnih statistika atraktivnih za studente.
   \item Moj kalendar: Prikaz studentovih rezervacija u kalendarskom prikazu
@@ -978,11 +979,14 @@ Tutori, nakon prijave, imaju pristup nadzornoj ploči s funkcionalnostima:
   \item Moj profil: Mogućnost uređivanja osobnih podataka za tutor profil.
   \item Moja lokacija: Postavljanje načina rada (\textit{online}/\textit{onsite} uz
         varijacije „Domaćin” ili „Putujem”) i ovisno o tome, adrese i radijusa
-        djelovanja.
-  \item Moji predmeti: Upravljanje predmetima koje tutor podučava.
-  \item Moje ponude repeticija: Kreiranje, uređivanje i brisanje ponuda repeticija.
+        djelovanja
+        (slike~\ref{fig:dashboardTutorLocationOnline}--\ref{fig:dashboardTutorLocationTravel}).
+  \item Moji predmeti: Upravljanje predmetima koje tutor podučava
+        (slika~\ref{fig:dashboardTutorSubjects}).
+  \item Moje ponude repeticija: Kreiranje, uređivanje i brisanje ponuda repeticija
+        (slika~\ref{fig:dashboardTutorOffers}).
   \item Moja dostupnost: Postavljanje vremenskih intervala kada je tutor dostupan za
-        rezervacije.
+        rezervacije (slika~\ref{fig:dashboardTutorAvailability}).
   \item Moj kalendar: Prikaz tutorovih rezervacija i dostupnosti u kalendarskom prikazu
         (slika~\ref{fig:dashboardTutorCalendar}).
   \item Moje rezervacije: Detaljan popis svih rezervacija s mogućnošću otkazivanja i
@@ -1081,8 +1085,7 @@ je sučelje prilagođeno i \textit{desktop} i mobilnim uređajima.
 Na slikama~\ref{fig:callGroupDesktop} {--}~\ref{fig:callGroupMobile2} prikazana
 je soba za sastanke pri audio-video pozivu između više sudionika (jedan tutor i
 dva studenta), što ilustrira funkcionalnost grupnih \textit{online} repeticija
-te ista ispravno radi kroz različite preglednike, operacijske sustave, uređaje
-i mreže.
+kroz različite preglednike, operativne sustave, uređaje i mrežne uvjete.
 
 \begin{figure}[H]
   \centering
