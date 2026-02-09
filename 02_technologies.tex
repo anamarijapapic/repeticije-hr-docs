@@ -250,7 +250,7 @@ slici~\ref{fig:webrtcAgent}~\cite{webrtcForTheCurious}.
 \begin{figure}[H]
     \includegraphics[width=1\linewidth,clip=]{assets/webrtc-agent.png}
     \centering
-    \caption{WebRTC kao kolekcija protokola (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/01-webrtc-agent.png}{webrtcforthecurious.com}})}\label{fig:webrtcAgent}
+    \caption{WebRTC kao kolekcija protokola~\cite{webrtcForTheCuriousImgAgent}}\label{fig:webrtcAgent}
 \end{figure}
 
 Nastao je kao pokušaj da se tehnologije za govor i video u stvarnom vremenu,
@@ -287,9 +287,9 @@ Topologija \textit{full mesh} podrazumijeva da je svaki sudionik povezan
 izravno sa svakim drugim sudionikom. Svaki klijent tada mora zasebno kodirati i
 slati svoj video tok prema svakom udaljenom sudioniku, što povećava opterećenje
 mreže i ograničava praktičan broj sudionika, ali uz relativno jednostavnu
-implementaciju i bez dodatne poslužiteljske infrastrukture za medije.
-Alternativno, \textit{hybrid mesh} smanjuje broj izravnih veza tako da se
-mediji prosljeđuju preko pojedinih sudionika.
+implementaciju i bez dodatne poslužiteljske infrastrukture. Alternativno,
+\textit{hybrid mesh} smanjuje broj izravnih veza tako da se podatci prosljeđuju
+preko pojedinih sudionika.
 
 Topologije \textit{client/server} tipa koriste specijalizirane poslužitelje:
 SFU (engl.\ \textit{Selective Forwarding Unit}) koji selektivno prosljeđuje
@@ -302,31 +302,31 @@ različite WebRTC topologije.
 \begin{figure}[H]
     \includegraphics[width=0.5\linewidth,clip=]{assets/webrtc-one-to-one.png}
     \centering
-    \caption{Topologija „1 na 1” (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-one-to-one.png}{webrtcforthecurious.com}})}\label{fig:webrtcOneToOne}
+    \caption{Topologija „1 na 1”~\cite{webrtcForTheCuriousImgOneToOne}}\label{fig:webrtcOneToOne}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=1\linewidth,clip=]{assets/webrtc-full-mesh.png}
     \centering
-    \caption{Topologija \textit{full mesh} (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-full-mesh.png}{webrtcforthecurious.com}})}\label{fig:webrtcFullMesh}
+    \caption{Topologija \textit{full mesh}~\cite{webrtcForTheCuriousImgFullMesh}}\label{fig:webrtcFullMesh}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=1\linewidth,clip=]{assets/webrtc-hybrid-mesh.png}
     \centering
-    \caption{Topologija \textit{hybrid mesh} (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-hybrid-mesh.png}{webrtcforthecurious.com}})}\label{fig:webrtcHybridMesh}
+    \caption{Topologija \textit{hybrid mesh}~\cite{webrtcForTheCuriousImgHybridMesh}}\label{fig:webrtcHybridMesh}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=0.8\linewidth,clip=]{assets/webrtc-sfu.png}
     \centering
-    \caption{Topologija SFU (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-sfu.png}{webrtcforthecurious.com}})}\label{fig:webrtcSFU}
+    \caption{Topologija SFU~\cite{webrtcForTheCuriousImgSfu}}\label{fig:webrtcSFU}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=0.8\linewidth,clip=]{assets/webrtc-mcu.png}
     \centering
-    \caption{Topologija MCU (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/08-mcu.png}{webrtcforthecurious.com}})}\label{fig:webrtcMCU}
+    \caption{Topologija MCU~\cite{webrtcForTheCuriousImgMcu}}\label{fig:webrtcMCU}
 \end{figure}
 
 U ovoj aplikaciji koristi se \textit{peer-to-peer} topologija \textit{full
@@ -357,7 +357,7 @@ slici~\ref{fig:webrtcSignaling}.
 \begin{figure}[H]
     \includegraphics[width=1\linewidth,clip=]{assets/webrtc-signaling-sequence-overview.png}
     \centering
-    \caption{Signalizacija (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/01-signaling-sequence-overview.png}{webrtcforthecurious.com}})}\label{fig:webrtcSignaling}
+    \caption{Signalizacija~\cite{webrtcForTheCuriousImgSignaling}}\label{fig:webrtcSignaling}
 \end{figure}
 
 Budući da WebRTC ne specificira način signalizacije, ova aplikacija koristi već
@@ -398,13 +398,12 @@ ograničenja NAT-a ili vatrozida, komunikacija se preusmjerava preko TURN
 poslužitelja koji djeluje kao relej između sudionika. Na taj način faza
 povezivanja dinamički prilagođava mrežnu putanju kako bi osigurala da se
 medijski tokovi mogu prenositi i u složenim mrežnim okruženjima, pri čemu se
-uvijek preferiraju najizravnije i najmanje „skupe”
-putanje~\cite{webrtcForTheCurious}.
+uvijek preferiraju najmanje „skupe” putanje~\cite{webrtcForTheCurious}.
 
 \begin{figure}[H]
     \includegraphics[width=0.5\linewidth,clip=]{assets/webrtc-connectivity-checks.png}
     \centering
-    \caption{ICE kandidati i testiranje parova (Izvor: \texttt{\href{https://webrtcforthecurious.com/docs/images/03-connectivity-checks.png}{webrtcforthecurious.com}})}\label{fig:webrtcConnectivityChecks}
+    \caption{ICE kandidati i testiranje parova~\cite{webrtcForTheCuriousImgConnectivityChecks}}\label{fig:webrtcConnectivityChecks}
 \end{figure}
 
 U trećoj fazi, \textbf{osiguravanju veze}, WebRTC osigurava da se svi medijski

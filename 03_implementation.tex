@@ -74,11 +74,11 @@ jest sljedeća:\\ \dirtree{.1 repeticije-hr/. .2 {.next/}. .2 app/. .2
   \item \texttt{vercel.json} {--}  Konfiguracija \textit{deploymenta} na platformu Vercel.
 \end{itemize}
 
-\subsubsection{Struktura \texttt{app/} direktorija}
+\subsubsection{Struktura direktorija \texttt{app/}}
 
-Struktura \texttt{app/} direktorija zasebno je predstavljena zbog svoje ključne
+Struktura direktorija \texttt{app/} zasebno je predstavljena zbog svoje ključne
 uloge u organizaciji k\^oda i implementaciji poslovne logike aplikacije. Unutar
-\texttt{app/} direktorija nalaze se sljedeći poddirektoriji i datoteke:\\
+direktorija \texttt{app/} nalaze se sljedeći poddirektoriji i datoteke:\\
 
 \dirtree{.1 app/. .2 (auth)/. .2 (main)/. .2 api/. .2 generated/. .2
   apple-icon.png. .2 favicon.ico. .2 globals.css. .2 icon0.svg. .2 icon1.png. .2
@@ -326,10 +326,10 @@ export class LessonOfferService {
 
 \subsection{Usmjeravanje zahtjeva}
 
-Next.js App Router koristi datotečnu strukturu unutar \texttt{app/} direktorija
+Next.js App Router koristi datotečnu strukturu unutar direktorija \texttt{app/}
 za definiranje ruta i API krajeva (engl.\ \textit{endpoints}). Struktura
 direktorija i datoteka unutar \texttt{app/} određuje URL putanje koje
-aplikacija podržava, dok datoteke unutar \texttt{app/api/} direktorija
+aplikacija podržava, dok datoteke unutar direktorija \texttt{app/api/}
 definiraju REST API krajeve~\cite{nextJsDocs}. Na primjer, datoteka
 \texttt{app/api/subjects/route.ts} implementira API rutu \texttt{/api/subjects}
 koja podržava HTTP metode \texttt{GET} i \texttt{POST} za rad s predmetima.
@@ -360,7 +360,7 @@ jednostavnu izgradnju detaljnih stranica za pojedine entitete (predmete, ponude
 repeticija, rezervacije i sl.) bez potrebe za ručnim definiranjem ruta.
 
 Opisani mehanizam usmjeravanja omogućuje da se korisničko sučelje i API krajevi
-organiziraju na konzistentan način unutar istog \texttt{app/} direktorija, pri
+organiziraju na konzistentan način unutar istog direktorija \texttt{app/}, pri
 čemu se čitljivost i održavanje k\^oda poboljšavaju zahvaljujući jasnom
 preslikavanju između strukture datoteka i URL putanja aplikacije.
 
@@ -872,7 +872,7 @@ okruženja\\ \texttt{RESEND\_API\_KEY} i
 \texttt{EmailService} implementira funkcija \texttt{sendEmail} koja koristi
 Resend API za slanje poruka.
 
-Primjer testnog dolaznog e-pošte prikazan je na slici~\ref{fig:testEmail}.
+Primjer testne dolazne poruke e-pošte prikazan je na slici~\ref{fig:testEmail}.
 
 \begin{figure}[H]
   \includegraphics[width=0.8\linewidth,clip]{assets/resend-test-email.png}
