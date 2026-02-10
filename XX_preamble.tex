@@ -36,6 +36,7 @@
 % Graphics and floats
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{rotating}
 
 % Tables, captions, and sub-figures
 \usepackage{longtable}
@@ -43,7 +44,6 @@
 \usepackage{subfig}
 
 % Citations & minor utilities
-\usepackage{cite}
 \usepackage{verbatim}
 \usepackage{parskip} % Space between paragraphs
 \usepackage{indentfirst}
@@ -139,6 +139,11 @@ literate=%
 
 % Hyperref last
 \usepackage[hidelinks]{hyperref}
+
+% Bibliography: use biblatex with biber backend and IEEE style; disable dashed
+\usepackage[backend=biber,style=ieee,dashed=false]{biblatex}
+\addbibresource{citations.bib}
+\usepackage{csquotes} % Recommended when using biblatex (babel/polyglossia)
 
 % Listings names in Croatian
 \renewcommand\lstlistlistingname{Popis ispisa k\^oda}

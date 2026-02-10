@@ -1,4 +1,4 @@
-\section{Tehnologije i teoretska podloga}
+\section{Tehnologije i teoretska podloga}\label{sec:technologies}
 
 U ovom poglavlju detaljno su opisane tehnologije i alati korišteni u razvoju,
 kao i teoretska podloga koja je oblikovala arhitekturu i dizajn sustava. Polazi
@@ -19,45 +19,45 @@ Next.js, temeljen na Reactu, istovremeno preuzima ulogu prezentacijskog sloja
 TypeScript, Node.js i \texttt{npm} čine temeljni tehnološki ekosustav u kojem
 se taj sloj razvija i izvršava.
 
-\textbf{Next.js} je razvojni okvir (engl.\ \textit{framework}) otvorenog k\^oda za React
-koji omogućuje objedinjeni (engl.\ \textit{full-stack}) razvoj web aplikacija,
-što znači da obuhvaća razvoj i klijentskog (engl.\ \textit{front-end}) i
-poslužiteljskog (engl.\ \textit{back-end}) dijela aplikacije. Razvijen je od
-strane tvrtke Vercel, a izvorni k\^od dostupan je na platformi
-GitHub~\cite{nextJsGitHub} gdje je prva verzija objavljena 2016.\ godine.
+\textbf{Next.js} je razvojni okvir (engl.~\textit{framework}) otvorenog k\^oda za React
+koji omogućuje objedinjeni (engl.~\textit{full-stack}) razvoj web aplikacija,
+što znači da obuhvaća razvoj i klijentskog (engl.~\textit{front-end}) i
+poslužiteljskog (engl.~\textit{back-end}) dijela aplikacije. Razvila ga je
+tvrtka Vercel, a izvorni k\^od dostupan je na platformi
+GitHub gdje je prva verzija objavljena 2016.\ godine~\cite{nextJsGitHub}.
 
 Temeljen je na JavaScriptu i izvršava se u okruženju \textbf{Node.js}, pri čemu
 Node.js omogućuje pokretanje JavaScript k\^oda izvan preglednika, na
 poslužitelju, što je preduvjet za poslužiteljsko renderiranje i izgradnju
 aplikacije~\cite{nodeJsAbout}. U praksi se Next.js projekti gotovo uvijek
-razvijaju uz \textbf{TypeScript}, nadskup JavaScripta razvijen od strane
-Microsofta, koji uvodi statičku tipizaciju i provjeru k\^oda u vrijeme
+razvijaju uz \textbf{TypeScript}, nadskup JavaScripta kojeg je razvio
+Microsoft, koji uvodi statičku tipizaciju i provjeru k\^oda za vrijeme
 prevođenja, čime se smanjuje broj pogrešaka u složenijim
 aplikacijama~\cite{typescriptDocs}.
 
-Upravljanje ovisnostima obavlja se putem \textbf{\texttt{npm}}-a (engl.\
-\textit{Node Package Manager}) ili alternativno drugim upraviteljima paketa kao
-što su \texttt{pnpm}/\texttt{yarn}/\texttt{bun}, koji omogućuju jednostavnu
-instalaciju, ažuriranje i skriptiranje razvojnih zadataka u okruženju Node.js.
-\mbox{Paketi} (biblioteke) se preuzimaju iz javnog repozitorija
-\texttt{\href{https://www.npmjs.com/}{npmjs.com}}, a definiraju se u datoteci
-\texttt{package.json} unutar projekta, a pri instalaciji se kreira i datoteka
-\texttt{package-lock.json} koja zaključava točne verzije ovisnosti radi
-konzistentnog okruženja. U direktoriju\\ \texttt{node\_modules} pohranjuju se
-sve instalirane ovisnosti projekta~\cite{npmDocs}.
+Upravljanje ovisnostima obavlja se putem \textbf{\texttt{npm}}-a
+(engl.~\textit{Node Package Manager}) ili alternativno drugim upraviteljima
+paketa kao što su \texttt{pnpm}/\texttt{yarn}/\texttt{bun}, koji omogućuju
+jednostavnu instalaciju, ažuriranje i skriptiranje razvojnih zadataka u
+okruženju Node.js. \mbox{Paketi} (biblioteke) se preuzimaju iz javnog
+repozitorija \texttt{\href{https://www.npmjs.com/}{npmjs.com}}, a definiraju se
+u datoteci \texttt{package.json} unutar projekta, a pri instalaciji se kreira i
+datoteka \texttt{package-lock.json} koja zaključava točne verzije ovisnosti
+radi konzistentnog okruženja. Sve instalirane ovisnosti projekta pohranjuju se
+u direktoriju \texttt{node\_modules}~\cite{npmDocs}.
 
-\textbf{React} (React.js) je slobodan softver otvorenog k\^oda tzv. FOSS (engl.\
-\textit{Free and Open Source Software}). Riječ je o JavaScript biblioteci za
-izgradnju korisničkih sučelja koju je razvio Facebook (sada Meta).
-Programski k\^od javno je objavljen 2013.\ godine, a od tada je prigrljen od
-strane zajednice i pozicionirao se kao jedna od najpopularnijih biblioteka za
-razvoj web aplikacija~\cite{reactGitHub}.
+\textbf{React} (React.js) je slobodan softver otvorenog k\^oda tzv. FOSS
+(engl.~\textit{Free and Open Source Software}). Riječ je o JavaScript
+biblioteci za izgradnju korisničkih sučelja koju je razvio Facebook (sada
+Meta). Programski k\^od javno je objavljen 2013.\ godine, a od tada je
+prigrljen od strane zajednice i pozicionirao se kao jedna od najpopularnijih
+biblioteka za razvoj web aplikacija~\cite{reactGitHub}.
 
 React se često opisuje kroz tri osnovne značajke: \textit{declarative},
 \textit{component-based} i sloganom \textit{„learn once, write anywhere”}.
 Deklarativan pristup znači da razvojni programer opisuje kakvo korisničko
 sučelje želi u određenom stanju aplikacije, a React se brine za učinkovit
-prikaz i osvježavanje DOM-a (engl.\ \textit{Document Object Model}), što
+prikaz i osvježavanje DOM-a (engl.~\textit{Document Object Model}), što
 olakšava razumijevanje i održavanje k\^oda. Komponentni pristup podrazumijeva
 da se sučelje sastoji od malih, ponovno iskoristivih komponenti koje
 enkapsuliraju logiku i prikaz pa se iste komponente mogu koristiti na više
@@ -68,50 +68,51 @@ aplikacija, bez ponovnog učenja potpuno novog programskog
 modela~\cite{reactLegacy}.
 
 React se temelji na konceptu komponenti, pri čemu se u povijesnom razvoju
-razlikuju klasne (engl.\ \textit{class}) komponente i funkcijske (engl.\
-\textit{function}) komponente, koje su trenutno preporučeni način pisanja
-komponenti. Uvođenjem kuka (engl.\ \textit{hooks}) preko Hook \mbox{API-ja}
-(engl.\ \textit{Application Programming Interface}) funkcijske komponente
-dobile su mogućnost upravljanja stanjem i \textit{side} efektima bez potrebe za
-klasama, čime se dodatno pojednostavilo strukturiranje logike i ponovna
-iskoristivost k\^oda. React koristi virtualni DOM {--} laganu, u memoriji
-pohranjenu reprezentaciju strukture korisničkog sučelja kako bi učinkovito
-uspoređivao prethodno i novo stanje te primjenjivao samo nužne promjene u
-stvarnom DOM-u, što značajno poboljšava performanse složenijih aplikacija. JSX
-(engl.\ \textit{JavaScript XML}) je sintaksno proširenje za JavaScript koje
-omogućuje zapis komponenti u obliku HTML-u slične sintakse, pri čemu se JSX u
-pozadini prevodi u pozive funkcije \texttt{React.createElement}, a razvojnom
-programeru olakšava čitanje i strukturiranje k\^oda~\cite{reactReference}. U
-kombinaciji s TypeScript\-om koristi se proširenje TSX (engl.\
-\textit{TypeScript JSX}). U novijim verzijama React uvodi i Server Components
-    {--} komponente koje se izvršavaju isključivo na poslužitelju, generiraju HTML
-bez slanja JavaScript k\^oda na klijent i tako smanjuju veličinu paketa te
-povećavaju sigurnost i performanse, osobito u kombinaciji s razvojnim okvirima
-poput Next.js-a.
+razlikuju komponente klasa (engl.~\textit{class}) i funkcijske
+(engl.~\textit{function}) komponente, koje su trenutno preporučeni način
+pisanja komponenti. Uvođenjem kuka (engl.~\textit{hooks}) preko Hook
+\mbox{API-ja} (engl.~\textit{Application Programming Interface}) funkcijske
+komponente dobile su mogućnost upravljanja stanjem i \textit{side} efektima bez
+potrebe za klasama, čime se dodatno pojednostavilo strukturiranje logike i
+ponovna iskoristivost k\^oda. React koristi virtualni DOM {--} laganu, u
+memoriji pohranjenu reprezentaciju strukture korisničkog sučelja kako bi
+učinkovito uspoređivao prethodno i novo stanje te primjenjivao samo nužne
+promjene u stvarnom DOM-u, što značajno poboljšava performanse složenijih
+aplikacija. Sintaksno proširenje za JavaScript JSX (engl.~\textit{JavaScript
+    XML}) omogućuje zapis komponenti u obliku HTML-u slične sintakse, pri čemu se
+JSX u pozadini prevodi u pozive funkcije \texttt{React.createElement}, a
+razvojnom programeru olakšava čitanje i strukturiranje
+k\^oda~\cite{reactReference}. U kombinaciji s TypeScript\-om koristi se
+proširenje TSX (engl.~\textit{TypeScript JSX}). U novijim verzijama React uvodi
+i Server Components {--} komponente koje se izvršavaju isključivo na
+poslužitelju, generiraju HTML bez slanja JavaScript k\^oda klijentu i tako
+smanjuju veličinu paketa te povećavaju sigurnost i performanse, osobito u
+kombinaciji s razvojnim okvirima poput Next.js-a.
 
 Next.js nadograđuje React dodavanjem brojnih značajki i optimizacija koje su
 olakšale izgradnju skalabilnih i visokoučinkovitih web aplikacija. Uvodi
 višestruke načine renderiranja stranica i napredne optimizacije koje su posebno
 važne za performanse i SEO.\@ Osim klasičnog renderiranja na strani klijenta
-    {--} CSR (engl.\ \textit{Client-Side Rendering}), Next.js podržava renderiranje
-na strani poslužitelja {--} SSR (engl.\ \textit{Server-Side Rendering}),
-statičko generiranje stranica {--} SSG (engl.\ \textit{Static Site Generation})
-te inkrementalno statičko obnavljanje {--} ISR (engl.\ \textit{Incremental
+    {--} CSR (engl.~\textit{Client-Side Rendering}), Next.js podržava renderiranje
+na strani poslužitelja {--} SSR (engl.~\textit{Server-Side Rendering}),
+statičko generiranje stranica {--} SSG (engl.~\textit{Static Site Generation})
+te inkrementalno statičko obnavljanje {--} ISR (engl.~\textit{Incremental
     Static Regeneration}), pri čemu se većina sadržaja isporučuje kao statički
 HTML, a pojedine stranice se povremeno regeneriraju kada se podatci promijene.
-Next.js također automatski dijeli k\^od u manje dijelove (engl.\ \textit{code
-    splitting}) i koristi usmjeravanje (engl.\ \textit{routing}) bazirano na
+Next.js također automatski dijeli k\^od u manje dijelove (engl.~\textit{code
+    splitting}) i koristi usmjeravanje (engl.~\textit{routing}) bazirano na
 strukturi direktorija, poznato kao \textit{file-based routing}. To znači da se
 samo nužni dijelovi k\^oda učitavaju za svaku stranicu, čime se smanjuje
 vrijeme učitavanja i poboljšava korisničko iskustvo. U novijim verzijama uveden
-je App Router s podrškom za React Server Components, strujanje (engl.\
-\textit{streaming}) sadržaja i Server Actions, što omogućuje da se dio logike
-obrade podataka izvršava na poslužitelju uz manju količinu potrebnog JavaScript
-k\^oda na klijentu, što pruža brži prikaz sadržaja korisniku~\cite{nextJsDocs}.
+je App Router s podrškom za React Server Components, strujanje
+(engl.~\textit{streaming}) sadržaja i Server Actions, što omogućuje da se dio
+logike obrade podataka izvršava na poslužitelju uz manju količinu potrebnog
+JavaScript k\^oda na klijentu, što pruža brži prikaz sadržaja
+korisniku~\cite{nextJsDocs}.
 
 Osim spomenutih značajki, Next.js sadrži integrirane alate za optimizaciju
 slika automatski generirajući različite veličine, koristi lijeno učitavanje
-(engl.\ \textit{lazy loading}) i moderne formate slika, čime se poboljšavaju
+(engl.~\textit{lazy loading}) i moderne formate slika, čime se poboljšavaju
 Core Web Vitals metrike i ukupne performanse web aplikacija. U kombinaciji s
 podrškom za TypeScript \textit{„out-of-the-box”}, integracijom s
 \mbox{Vercelom} za jednostavnu isporuku te bogatim ekosustavom dodataka,
@@ -120,78 +121,83 @@ produkcijski spremnih aplikacija~\cite{nextJsDocs}.
 
 U trenutku izrade rada najnovija stabilna verzija Next.js-a je 16, dok je React
 dosegao verziju 19 te su iste korištene u izradi praktičnog rada, uz TypeScript
-verzije 5.x. Korištena verzija Node.js-a je 24.x LTS (engl.\ \textit{Long Term
+verzije 5.x. Korištena verzija Node.js-a je 24.x LTS (engl.~\textit{Long Term
     Support}) uz \texttt{npm} verzije 11.x.
+
+\newpage
 
 \subsection{Sloj korisničkog sučelja}
 
-Sloj korisničkog sučelja (engl.\ UI {--} \textit{User Interface}) aplikacije
+Sloj korisničkog sučelja (engl.~UI {--} \textit{User Interface}) aplikacije
 temelji se na kombinaciji biblioteka \texttt{shadcn/ui}, Radix UI i Tailwind
 CSS, koje su usko povezane i nadograđuju se jedna na drugu.
 
-\textbf{\texttt{shadcn/ui}} je zbirka unaprijed pripremljenih React komponenti (npr.\ avatar,
-botuni, bedževi, kartice za prikaz sadržaja, dijaloški okviri, padajući
-izbornici, polja i grupe za unos, navigacijski izbornici, tablice itd.) koje su
-izgrađene na Radix UI „primitivima” i stilizirane pomoću Tailwind CSS-a.
-Umjesto da se isporučuje kao klasična biblioteka ovisnosti, \texttt{shadcn/ui}
-generira stvarne izvorišne datoteke komponenti koje se kopiraju u projekt, čime
-razvojni programer zadržava potpunu kontrolu nad k\^odom, može ga prilagoditi
-specifičnim potrebama aplikacije i izbjegava dodatni teret zasebne UI
-biblioteke dok se aplikacija izvršava (engl.\ \textit{runtime}). Ovo je osobito
-korisno u većim projektima, gdje se očekuju dugoročno održavanje, prilagodba
-dizajna i dosljedan vizualni identitet~\cite{shadcnDocs}.
+Biblioteka \textbf{\texttt{shadcn/ui}} je zbirka unaprijed pripremljenih React
+komponenti (npr.~avatar, botuni, bedževi, kartice za prikaz sadržaja, dijaloški
+okviri, padajući izbornici, polja i grupe za unos, navigacijski izbornici,
+tablice itd.) koje su izgrađene na Radix UI „primitivima” i stilizirane pomoću
+Tailwind CSS-a. Umjesto da se isporučuje kao klasična biblioteka ovisnosti,
+\texttt{shadcn/ui} generira stvarne izvorne datoteke komponenti koje se
+kopiraju u projekt, čime razvojni programer zadržava potpunu kontrolu nad
+k\^odom, može ga prilagoditi specifičnim potrebama aplikacije i izbjegava
+dodatni teret zasebne UI biblioteke dok se aplikacija izvršava
+(engl.~\textit{runtime}). Ovo je osobito korisno u većim projektima, gdje se
+očekuju dugoročno održavanje, prilagodba dizajna i dosljedan vizualni
+identitet~\cite{shadcnDocs}.
 
-\textbf{Radix UI} predstavlja skup pristupačnih (engl.\ \textit{accessible})
+\textbf{Radix UI} predstavlja skup pristupačnih (engl.~\textit{accessible})
 niskorazinskih komponenti tzv. „primitiva” poput dijaloških okvira, skočnih
-prozora, kartica (engl.\ \textit{tabs}), skočnih izbornika i slično. Fokus
-Radix UI-ja je na ispravnom ponašanju i pristupačnosti: osigurava ispravne ARIA
-(engl.\ \textit{Accessible Rich Internet Applications}) atribute, upravljanje
-fokusom i podršku za tipkovničku navigaciju u skladu s WAI-ARIA (engl.\
-\textit{Web Accessibility \mbox{Initiative} {--} ARIA}) smjernicama, dok izgled i
-stilizacija ostaju u potpunosti u domeni razvojnih timova~\cite{radixUiPrimitives}.
+prozora, kartica (engl.~\textit{tabs}), skočnih izbornika i slično. Fokus Radix
+UI-ja je na ispravnom ponašanju i pristupačnosti: osigurava ispravne ARIA
+(engl.~\textit{Accessible Rich Internet Applications}) atribute, upravljanje
+fokusom i podršku za tipkovničku navigaciju u skladu s WAI-ARIA
+(engl.~\textit{Web Accessibility \mbox{Initiative} {--} ARIA}) smjernicama, dok
+izgled i stilizacija ostaju u potpunosti u domeni razvojnih
+timova~\cite{radixUiPrimitives}.
 
-\textbf{Tailwind CSS} je utilitaristički (engl.\ \textit{utility-first}) razvojni okvir
-za CSS koji umjesto gotovih vizualnih komponenti nudi velik broj malih,
-jednoznačnih klasa za oblikovanje (npr.\ razmaci, boje, tipografija, raspored {--}
-fleksibilni i mrežni (engl.\ \textit{grid}) rasporedi). Te se klase kombiniraju
-izravno u \textit{markupu} ili JSX/TSX k\^odu, čime se smanjuje potreba za pisanjem
-zasebnih CSS datoteka i olakšava održavanje dosljednog dizajna u komponentnom
-pristupu Reacta. Tailwind se konfigurira putem konfiguracijske
-datoteke koja definira dizajnerske tokene (boje, tipografiju, radijuse,
-razmake), a u produkcijskom okruženju alat automatski uklanja neiskorištene klase
-(engl.\ \textit{tree shaking}), što rezultira malim konačnim CSS paketom i
-boljim performansama~\cite{tailwindDocsCoreConceptsStylingWithUtilityClasses}.
+\textbf{Tailwind CSS} je razvojni okvir za CSS temeljen na pomoćnim klasama
+(engl.~\textit{utility-first}) koji umjesto gotovih vizualnih komponenti nudi
+velik broj malih, jednoznačnih klasa za oblikovanje npr.~razmaci, boje,
+tipografija, raspored {--} fleksibilni i mrežni (engl.~\textit{grid})
+rasporedi. Te se klase kombiniraju izravno u \textit{markupu} ili JSX/TSX
+k\^odu, čime se smanjuje potreba za pisanjem zasebnih CSS datoteka i olakšava
+održavanje dosljednog dizajna u komponentnom pristupu Reacta. Tailwind se
+konfigurira putem konfiguracijske datoteke koja definira dizajnerske tokene
+(boje, tipografiju, radijuse, razmake), a u produkcijskom okruženju alat
+automatski uklanja neiskorištene klase (engl.~\textit{tree shaking}), što
+rezultira malim konačnim CSS paketom i boljim
+performansama~\cite{tailwindDocsCoreConceptsStylingWithUtilityClasses}.
 
-U razvijenoj aplikaciji kombinacija predstavljenih UI biblioteka omogućuje
-izradu modernog, responzivnog i pristupačnog korisničkog sučelja uz dobru
-ravnotežu između brzine razvoja, kontrole nad dizajnom i tehničke kvalitete.
+Ova kombinacija biblioteka omogućuje izradu modernog, responzivnog i
+pristupačnog korisničkog sučelja uz dobru ravnotežu između brzine razvoja i
+kontrole nad dizajnom.
 
 \subsection{Podatkovni sloj}
 
 Za pohranu podataka u aplikaciji koristi se relacijska baza podataka
-PostgreSQL, uz objektno-relacijsko mapiranje pomoću Prisma ORM-a (engl.\
-\textit{Object-Relational Mapper}) i upravljani \textit{hosting} preko
+PostgreSQL, uz objektno-relacijsko mapiranje pomoću Prisma ORM-a
+(engl.~\textit{Object-Relational Mapper}) i upravljani \textit{hosting} preko
 platforme Supabase.
 
-\textbf{PostgreSQL} (Postgres) snažan je sustav za upravljanje relacijskim bazama
-podataka (engl.\ \textit{RDBMS {--} Relational Database Management System})
+\textbf{PostgreSQL} (Postgres) je sustav za upravljanje relacijskim bazama
+podataka (engl.~\textit{RDBMS {--} Relational Database Management System})
 otvorenog k\^oda s dugom poviješću razvoja, visokom razinom usklađenosti sa SQL
-(engl.\ \textit{Structured Query \mbox{Language}}) standardom te podrškom za napredne
+(engl.~\textit{Structured Query \mbox{Language}}) standardom te podrškom za napredne
 tipove podataka i transakcijske operacije. Kao objektno-relacijski sustav,
 PostgreSQL osim klasičnih relacijskih tablica podržava i pohranu
-polu\-strukturiranih podataka (npr.\ JSON/JSONB tipovi, polja, geografski
+polu\-strukturiranih podataka (npr.~JSON/JSONB tipovi, polja, geografski
 tipovi), što ga čini pogodnim za moderne web aplikacije koje kombiniraju strogo
-strukturirane podatke (npr.\ korisnici, termini rezervacija, recenzije) s
+strukturirane podatke (npr.~korisnici, termini rezervacija, recenzije) s
 fleksibilnijim strukturama~\cite{postgreSqlAbout}.
 
 \textbf{Prisma ORM} je biblioteka za objektno-relacijsko mapiranje za Node.js i
-TypeScript koja omogućuje tipno siguran (engl.\ \textit{type-safe}) pristup
+TypeScript koja omogućuje tipski siguran (engl.~\textit{type-safe}) pristup
 bazi podataka. U središtu Prisma pristupa nalazi se datoteka
 \texttt{schema.prisma} u kojoj se deklarativno definira shema podataka putem
 Prisma Schema Language (PSL) {--} definiraju se modeli, relacije i mapiranja na
 tablice u bazi, a Prisma na temelju te sheme automatski generira klijenta za
 pristup podatcima, zajedno s odgovarajućim TypeScript tipovima. Time se postiže
-da je sve upite prema bazi moguće statički provjeriti u vrijeme prevođenja, uz
+da je sve upite prema bazi moguće statički provjeriti za vrijeme prevođenja, uz
 bogatu podršku za automatsko dovršavanje i rano otkrivanje neispravnih upita
 prije pokretanja aplikacije, što smanjuje broj pogrešaka i ubrzava razvoj. Uz
 Prisma Client za rad s podatcima, Prisma nudi i alate za migracije (Prisma
@@ -199,20 +205,20 @@ Migrate) te vizualni pregled podataka (Prisma Studio) koji olakšavaju
 upravljanje razvojnim i produkcijskim okruženjima~\cite{prismaDocs}.
 
 \textbf{Supabase} je platforma otvorenog k\^oda tipa \textit{„backend kao usluga”}
-(engl.\ \textit{Backend-as-a-Service}) izgrađena na PostgreSQL-u, koja nudi
+(engl.~\textit{Backend-as-a-Service}) izgrađena na PostgreSQL-u, koja nudi
 upravljanu bazu podataka, autentikaciju, pohranu datoteka, \textit{real-time}
 funkcionalnosti i poslužiteljske funkcije. U praksi to znači da se PostgreSQL
-baza podataka može vrlo brzo podići u oblaku, uz automatski izložene API-je,
-ugrađenu podršku za sigurnost na razini retka (engl.\ \textit{Row-Level
+baza podataka može vrlo brzo podići u oblaku, uz automatski dostupne API-je,
+ugrađenu podršku za sigurnost na razini retka (engl.~\textit{Row-Level
     Security}) i mogućnost \mbox{„osluškivanja”} promjena u tablicama u stvarnom vremenu
 putem WebSocketa. Supabase pruža i CLI alat te mogućnost lokalnog razvoja putem
 Docker okruženja, što olakšava repliciranje produkcijske baze u lokalnom
 okruženju i testiranje sheme podataka~\cite{supabaseDocs}.
 
 U ovoj aplikaciji PostgreSQL služi kao temeljna baza podataka, Prisma ORM kao
-tipno siguran sloj pristupa podatcima u okruženju Next.js/TypeScript, dok
+tipski siguran sloj pristupa podatcima u okruženju Next.js/TypeScript, dok
 Supabase pruža \textit{hosting} baze i \textit{real-time} funkcionalnosti, čime
-se dobiva skalabilan i moderni podatkovni sloj prilagođen potrebama web
+se dobiva skalabilan i moderan podatkovni sloj prilagođen potrebama web
 aplikacije za repeticije. Korištena su sljedeća izdanja tehnologija: PostgreSQL
 17.x, Prisma ORM 7.x i Supabase 2.x.
 
@@ -220,7 +226,7 @@ aplikacije za repeticije. Korištena su sljedeća izdanja tehnologija: PostgreSQ
 
 Komunikacijski sloj u ovoj aplikaciji zadužen je za uspostavljanje i održavanje
 komunikacije u stvarnom vremenu između tutora i učenika tijekom \textit{online}
-repeticija. U tu svrhu koristi se \textbf{WebRTC} (engl.\ \textit{Web Real‑Time
+repeticija. U tu svrhu koristi se \textbf{WebRTC} (engl.~\textit{Web Real-Time
     Communication}).
 
 WebRTC preuzima brigu o dohvaćanju audio i video tokova, uspostavi šifriranog
@@ -238,9 +244,9 @@ slučaju mobilnih aplikacija. Krajnji korisnici mogu izmjenjivati audio, video i
 podatke bez potrebe za dodatcima ili posebnim softverom. WebRTC se sastoji od
 WebRTC protokola i WebRTC API-ja specificiranog za \mbox{JavaScript}, dok je za
 nativne klijente dostupna biblioteka koja pruža iste
-funkcionalnosti~\cite{webrtcOrg}. Izvorni k\^od dostupan je u repozitoriju na
-poveznici\\
-\texttt{\href{https://webrtc.googlesource.com/src}{webrtc.googlesource.com/src}}.
+funkcionalnosti~\cite{webrtcOrg}. Na poveznici
+\texttt{\href{https://webrtc.googlesource.com/src}{webrtc.googlesource.com/src}}
+dostupan je u repozitorij s izvornim k\^odom WebRTC projekta.
 
 WebRTC protokol u suštini je sastavljen od niza standardiziranih protokola i
 stoga je često opisivan kao kolekcija protokola jer orkestrira različite
@@ -251,34 +257,34 @@ slici~\ref{fig:webrtcAgent}~\cite{webrtcForTheCurious}.
 \begin{figure}[H]
     \includegraphics[width=1\linewidth,clip=]{assets/webrtc-agent.png}
     \centering
-    \caption{WebRTC kao kolekcija protokola~\cite{webrtcForTheCuriousImgAgent}}\label{fig:webrtcAgent}
+    \caption{WebRTC kao kolekcija protokola~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcAgent}
 \end{figure}
 
 Nastao je kao pokušaj da se tehnologije za govor i video u stvarnom vremenu,
 koje su ranije bile zatvorene i vlasničke, ugrade izravno u web preglednike kao
 otvoren standard. Google je 2010.\ kupio tvrtku Global IP Solutions (GIPS) te
-otvoreno licencirao k\^od njihovih RTC komponenti, što je bio ključni korak u
-razvoju WebRTC-a. Nakon toga, Google je 2011.\ pokrenuo projekt WebRTC, a
-standardizacija je trajala nekoliko godina i iziskivala velike napore i
-suradnju između dvaju standardizacijskih tijela: W3C-a (engl.\ \textit{World
-    Wide Web Consortium}) i IETF-a (engl.\ \textit{Internet Engineering Task
-    Force}) te velikog broja tvrtki i pojedinaca iz industrije. Uz Google, u razvoj
+objavio k\^od njihovih RTC komponenti pod otvorenom BSD licencom, što je bio
+ključni korak u razvoju WebRTC-a. Nakon toga, Google je 2011.\ pokrenuo projekt
+WebRTC, a standardizacija je trajala nekoliko godina i iziskivala velike napore
+i suradnju između dvaju standardizacijskih tijela: W3C-a (engl.~\textit{World
+    Wide Web Consortium}) i IETF-a (engl.~\textit{Internet Engineering Task Force})
+te velikog broja tvrtki i pojedinaca iz industrije. Uz Google, u razvoj
 specifikacija i implementaciju uključile su se i tvrtke poput Mozille,
 Microsofta, Applea, Intel Corporations, Cisca i Ericssona, a podrška je
 postupno uvedena u svim modernim web preglednicima, čime je WebRTC postao
 standardni mehanizam za \textit{in-browser} audio-video
 komunikaciju~\cite{webrtcRec}. Danas se primjenjuje u širokom spektru
 aplikacija, od video konferencija, do \textit{online} igara, udaljenog
-upravljanja, IoT (engl.\ \textit{Internet of Things}) komunikacije i drugih
+upravljanja, IoT (engl.~\textit{Internet of Things}) komunikacije i drugih
 scenarija koji zahtijevaju nisku latenciju i visoku kvalitetu prijenosa.
 
 \newpage
 
 \paragraph{Topologije sustava WebRTC}\mbox{}
 
-WebRTC topologije mogu se podijeliti na dva tipa: temeljene na ravnopravnim\\
-sudionicima (engl.\ P2P {--} \textit{peer-to-peer}) i temeljene na odnosu
-klijent/poslužitelj (engl.\\ \textit{client/server})~\cite{webrtcForTheCurious}.
+WebRTC topologije mogu se podijeliti na dva tipa: temeljene na ravnopravnim
+sudionicima (engl.~P2P {--} \textit{peer-to-peer}) i temeljene na odnosu
+klijent/poslužitelj (engl. \textit{client/server})~\cite{webrtcForTheCurious}.
 
 U najjednostavnijem slučaju dvije krajnje točke uspostavljaju izravnu vezu „1
 na 1” te međusobno razmjenjuju medijske tokove i podatke. Za grupne scenarije
@@ -295,8 +301,8 @@ infrastrukture. Alternativno, hibridno isprepletena topologija (engl.
 prosljeđuju preko pojedinih sudionika.
 
 Topologije klijent/poslužitelj tipa koriste specijalizirane poslužitelje: SFU
-(engl.\\ \textit{Selective Forwarding Unit}) koji selektivno prosljeđuje
-pristigle tokove svim klijentima te MCU (engl.\ \textit{Multipoint Conferencing
+(engl.~\textit{Selective Forwarding Unit}) koji selektivno prosljeđuje
+pristigle tokove svim klijentima te MCU (engl.~\textit{Multipoint Conferencing
     Unit}) koji višestruke ulazne tokove spaja u jedan kompozitni izlazni tok.
 
 Na slikama~\ref{fig:webrtcOneToOne} {--}~\ref{fig:webrtcMCU} prikazane su
@@ -305,31 +311,31 @@ različite WebRTC topologije.
 \begin{figure}[H]
     \includegraphics[width=0.5\linewidth,clip=]{assets/webrtc-one-to-one.png}
     \centering
-    \caption{Topologija „1 na 1”~\cite{webrtcForTheCuriousImgOneToOne}}\label{fig:webrtcOneToOne}
+    \caption{Topologija „1 na 1”~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcOneToOne}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=1\linewidth,clip=]{assets/webrtc-full-mesh.png}
     \centering
-    \caption{Potpuno isprepletena topologija~\cite{webrtcForTheCuriousImgFullMesh}}\label{fig:webrtcFullMesh}
+    \caption{Potpuno isprepletena topologija~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcFullMesh}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=1\linewidth,clip=]{assets/webrtc-hybrid-mesh.png}
     \centering
-    \caption{Hibridno isprepletena topologija~\cite{webrtcForTheCuriousImgHybridMesh}}\label{fig:webrtcHybridMesh}
+    \caption{Hibridno isprepletena topologija~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcHybridMesh}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=0.8\linewidth,clip=]{assets/webrtc-sfu.png}
     \centering
-    \caption{Topologija SFU~\cite{webrtcForTheCuriousImgSfu}}\label{fig:webrtcSFU}
+    \caption{Topologija SFU~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcSFU}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=0.8\linewidth,clip=]{assets/webrtc-mcu.png}
     \centering
-    \caption{Topologija MCU~\cite{webrtcForTheCuriousImgMcu}}\label{fig:webrtcMCU}
+    \caption{Topologija MCU~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcMCU}
 \end{figure}
 
 U ovoj aplikaciji koristi se potpuno isprepletena topologija što znači da svaki
@@ -348,9 +354,9 @@ sudionika međusobno „pronađu” i dogovore kako će komunicirati, prije nego
 krene stvarni prijenos audio-video podataka. Signalizacija nije standardizirana
 u samom WebRTC-u, već se odvija \textit{„out-of-band”} i smatra dijelom
 aplikacijske logike {--} razvojni tim slobodno bira protokole i formate poruka
-(npr.\ REST, WebSocket i sl.). Najprije sudionici uspostave vezu sa zajedničkim
+(npr.~REST, WebSocket i sl.). Najprije sudionici uspostave vezu sa zajedničkim
 signalizacijskim kanalom i na neki način identificiraju sobu ili razgovor u
-kojem sudjeluju. Zatim preko tog kanala razmjenjuju SDP (engl.\ \textit{Session
+kojem sudjeluju. Zatim preko tog kanala razmjenjuju SDP (engl.~\textit{Session
     Description Protocol}) poruke s informacijama o tome koje medijske tokove žele
 slati te koje \textit{kodeke} i konfiguracije podržavaju, kao i pripadajuće
 signalizacijske poruke (ponuda/odgovor, kandidati i sl.) potrebne za uspostavu
@@ -358,9 +364,9 @@ veze~\cite{webrtcForTheCurious}. Signalizacija je ilustrirana na
 slici~\ref{fig:webrtcSignaling}.
 
 \begin{figure}[H]
-    \includegraphics[width=1\linewidth,clip=]{assets/webrtc-signaling-sequence-overview.png}
+    \includegraphics[width=0.85\linewidth,clip=]{assets/webrtc-signaling-sequence-overview.png}
     \centering
-    \caption{Signalizacija~\cite{webrtcForTheCuriousImgSignaling}}\label{fig:webrtcSignaling}
+    \caption{Signalizacija~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcSignaling}
 \end{figure}
 
 Budući da WebRTC ne specificira način signalizacije, ova aplikacija koristi već
@@ -376,13 +382,13 @@ preuzima prijenos multimedije u stvarnom vremenu.
 Nakon što je signalizacijom razmijenjena osnovna konfiguracija sesije, slijedi
 druga faza {--} \textbf{povezivanje}, u kojoj WebRTC pokušava uspostaviti
 izvedivu mrežnu putanju između sudionika. U stvarnim uvjetima većina klijenata
-ne posjeduje javnu IP adresu, već se nalazi iza usmjernika (engl.\
-\textit{router}), NAT (engl.\ \textit{Network Address Translation}) uređaja i
-vatrozida, što onemogućuje izravno adresiranje između dvaju računala. Kako bi
-unatoč tome ostvario \textit{peer-to-peer} komunikaciju, WebRTC koristi
-kombinaciju okvira ICE (engl.\ \textit{Interactive Connectivity Establishment})
-te STUN (engl.\ \textit{Session Traversal Utilities for NAT}) i TURN (engl.\
-\textit{Traversal Using Relays around NAT}) infrastrukture za tzv.\ NAT
+ne posjeduje javnu IP adresu, već se nalazi iza usmjernika
+(engl.~\textit{router}), NAT (engl.~\textit{Network Address Translation})
+uređaja i vatrozida, što onemogućuje izravno adresiranje između dvaju računala.
+Kako bi unatoč tome ostvario \textit{peer-to-peer} komunikaciju, WebRTC koristi
+kombinaciju okvira ICE (engl.~\textit{Interactive Connectivity Establishment})
+te STUN (engl.~\textit{Session Traversal Utilities for NAT}) i TURN
+(engl.~\textit{Traversal Using Relays around NAT}) infrastrukture za tzv.~NAT
 \textit{traversal}, odnosno pronalaženje puteva kroz mrežnu
 konfiguraciju~\cite{webrtcForTheCurious}.
 
@@ -392,11 +398,11 @@ adrese dobivene putem STUN poslužitelja te, po potrebi, relejske (engl.
 \textit{relay}) adrese dobivene preko TURN poslužitelja. Ti se kandidati zatim
 razmjenjuju signalizacijskim kanalom i sustavno testiraju kako bi se pronašao
 par kandidata preko kojih je moguće uspostaviti dvosmjernu komunikaciju uz što
-manju latenciju. Testiranje parova kandidata (engl.\ \textit{connectivity
+manju latenciju. Testiranje parova kandidata (engl.~\textit{connectivity
     checks}) prikazano je na slici~\ref{fig:webrtcConnectivityChecks}. Na slici se
 nalaze dva ICE agenta, svaki s po tri različita kandidata (što podrazumijeva
 ukupno devet parova kandidata). U idealnom slučaju odabire se izravna P2P
-putanja (npr.\ putem javne adrese otkrivene STUN-om), a ako to nije moguće zbog
+putanja (npr.~putem javne adrese otkrivene STUN-om), a ako to nije moguće zbog
 ograničenja NAT-a ili vatrozida, komunikacija se preusmjerava preko TURN
 poslužitelja koji djeluje kao relej između sudionika. Na taj način faza
 povezivanja dinamički prilagođava mrežnu putanju kako bi osigurala da se
@@ -404,23 +410,23 @@ medijski tokovi mogu prenositi i u složenim mrežnim okruženjima, pri čemu se
 uvijek preferiraju najmanje „skupe” putanje~\cite{webrtcForTheCurious}.
 
 \begin{figure}[H]
-    \includegraphics[width=0.5\linewidth,clip=]{assets/webrtc-connectivity-checks.png}
+    \includegraphics[width=0.4\linewidth,clip=]{assets/webrtc-connectivity-checks.png}
     \centering
-    \caption{ICE kandidati i testiranje parova~\cite{webrtcForTheCuriousImgConnectivityChecks}}\label{fig:webrtcConnectivityChecks}
+    \caption{ICE kandidati i testiranje parova~\cite{webrtcForTheCuriousWeb}}\label{fig:webrtcConnectivityChecks}
 \end{figure}
 
 U trećoj fazi, \textbf{osiguravanju veze}, WebRTC osigurava da se svi medijski
 i podatkovni tokovi prenose sigurno. U tu svrhu koristi kombinaciju dvaju
-protokola: DTLS (engl.\ \textit{\mbox{Datagram} Transport Layer Security}) i
-SRTP (engl.\ \textit{Secure Real-time Transport Protocol}). DTLS je UDP inačica
+protokola: DTLS (engl.~\textit{\mbox{Datagram} Transport Layer Security}) i
+SRTP (engl.~\textit{Secure Real-time Transport Protocol}). DTLS je UDP inačica
 TLS-a koji se koristi u HTTPS-u, zadužena za sigurno pregovaranje
 kriptografskih parametara i razmjenu ključeva preko nepouzdanog UDP transporta,
 pri čemu štiti od prisluškivanja, krivotvorenja poruka i njihove izmjene u
 prijenosu~\cite{webrtcForTheCurious}.
 
 SRTP nadograđuje RTP tako da dodaje enkripciju sadržaja medijskih paketa,
-provjeru integriteta i zaštitu od ponovnog reproduciranja paketa (engl.\
-\textit{replay attacks}), ali pritom ostaje dovoljno lagan da zadovolji
+provjeru integriteta i zaštitu od ponovnog reproduciranja paketa
+(engl.~\textit{replay attacks}), ali pritom ostaje dovoljno lagan da zadovolji
 zahtjeve komunikacije u stvarnom vremenu. U WebRTC-u se ključevi koji se
 koriste u SRTP-u ne šalju kao \textit{plain-text}, već se izvode iz DTLS sesije
 u postupku poznatom kao DTLS-SRTP {--} najprije se između sudionika uspostavlja
@@ -439,11 +445,11 @@ omogućuje sinkronizaciju, detekciju gubitka paketa i prilagodbu reprodukcije
 mrežnim uvjetima. U WebRTC-u se RTP gotovo uvijek koristi u kombinaciji sa
 SRTP-om, koji dodaje enkripciju i zaštitu integriteta, pa se stvarni medijski
 promet prenosi putem SRTP paketa preko ranije uspostavljenog sigurnog kanala.
-Za proizvoljne podatkovne tokove WebRTC koristi SCTP (engl.\ \textit{Stream
+Za proizvoljne podatkovne tokove WebRTC koristi SCTP (engl.~\textit{Stream
     Control Transmission \mbox{Protocol}}) inkapsuliran unutar DTLS-a, što
-omogućuje pouzdanu, redoslijednu komunikaciju između sudionika, uz logičko
-dijeljenje prometa u više neovisnih strujanja (engl.\
-\textit{\mbox{streams}})~\cite{webrtcForTheCurious}.
+omogućuje pouzdanu, redoslijedom zajamčenu razmjenu podataka između sudionika,
+uz logičko dijeljenje prometa u više neovisnih tokova
+(engl.~\textit{\mbox{streams}})~\cite{webrtcForTheCurious}.
 
 \subsection{Ostali alati}
 
